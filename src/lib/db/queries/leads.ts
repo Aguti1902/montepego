@@ -77,3 +77,19 @@ export async function updateLeadStatus(
     .returning();
   return row ?? null;
 }
+
+export async function markLeadCrmPushed(id: string): Promise<void> {
+  if (!hasDatabase()) {
+    const idx = memoryLeads.findIndex((l) => l.id === id);
+    if (idx >= 0) {
+      memoryLeads[idx] = { ...memoryLeads[idx], crmPushedAt: new Date() };
+    }
+    return;
+  }
+
+  const db = getDb();
+  await db
+    .update(leads)
+    .set({ crmPushedAt: new Date() })
+    .where(eq(leads.id, id));
+}

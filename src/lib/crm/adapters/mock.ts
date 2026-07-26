@@ -49,6 +49,6 @@ export const mockCrmAdapter: CrmAdapter = {
     return seed ? toRaw(seed) : null;
   },
   async pushLead(lead: LeadPayload) {
-    return { crmId: `mock-lead-${lead.email}` };
+    return { crmId: `mock-lead-${lead.email}`, mocked: true };
   },
 };

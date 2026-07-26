@@ -9,11 +9,15 @@ export const PENDING_TEAM = [
   },
 ] as const;
 
+/**
+ * CRM: la cartera real entra por API vía adaptador (`CRM_ADAPTER`).
+ * Preferir variables de entorno CRM_* sobre este objeto.
+ * Proveedor previsto: eGO Real Estate (https://www.egorealestate.com).
+ */
 export const PENDING_CRM = {
-  provider: "mock" as const, // TODO(cliente): confirmar CRM (Inmovilla | Resales | Optima | Witei | Egorealestate)
-  apiKey: "", // TODO(cliente): confirmar
-  apiUrl: "", // TODO(cliente): confirmar
-};
+  provider: "mock" as const, // TODO(cliente): poner CRM_ADAPTER=ego + token
+  // No guardar secretos aquí: usar CRM_API_URL / CRM_API_KEY en .env.local
+} as const;
 
 export const PENDING_WHATSAPP_BUSINESS = {
   phoneNumberId: "", // TODO(cliente): confirmar

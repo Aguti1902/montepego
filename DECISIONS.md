@@ -14,3 +14,6 @@ Registro de decisiones tomadas por cuenta propia durante la construcción del pr
 | 2026-07-26 | Feed XML prioritario: Kyero (Idealista/Fotocasa pendientes de acceso) | `PENDING_PORTAL_FEEDS`; Kyero no requiere credenciales de portal para el XML |
 | 2026-07-26 | IA y email con fallback mock si faltan API keys | Permite E2E y demos locales; el coste se registra igual |
 | 2026-07-26 | Portales con memoria local hasta auth de roles en Supabase | Flujos visibles sin BD; esquema RLS en `0002_portals.sql` |
+| 2026-07-26 | Front nunca llama al CRM: solo adaptador + sync/pushLead en servidor | PROJECT.md: CRM deja de ser fuente de verdad del front; BD propia + overrides |
+| 2026-07-26 | `CRM_ADAPTER=mock` simula API; prod previsto `ego` (eGO Real Estate) | Cliente confirmó eGO; token/URL exactos pendientes en env |
+| 2026-07-26 | `pushLead` obligatorio en el contrato; si no soportado → skipped sin romper el form | Leads web no deben fallar porque el CRM no acepte el alta aún |

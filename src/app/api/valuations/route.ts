@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { createValuation } from "@/lib/db/queries/valuations";
 import { createLead } from "@/lib/db/queries/leads";
 import { valuationSchema } from "@/lib/validators/valuations";
+import { pushLeadToCrm } from "@/lib/crm/push-lead";
 
 export async function POST(request: Request) {
   try {
@@ -31,7 +32,7 @@ export async function POST(request: Request) {
       condition: data.condition || undefined,
     });
 
-    await createLead({
+    const lead = await createLead({
       name: data.name,
       email: data.email,
       phone: data.phone || undefined,
@@ -44,8 +45,17 @@ export async function POST(request: Request) {
       },
     });
 
+    const crmPush = await pushLeadToCrm(lead.id, {
+      name: data.name,
+      email: data.email,
+      phone: data.phone || undefined,
+      message: `Valuation request: ${data.address}`,
+      locale: "en",
+      source: "valuation",
+    });
+
     return NextResponse.json(
-      { id: valuation.id, status: valuation.status },
+      { id: valuation.id, status: valuation.status, crm: crmPush },
       { status: 201 },
     );
   } catch (error) {

@@ -14,6 +14,10 @@ import type {
   ResolvedProperty,
 } from "@/lib/db/types";
 
+/**
+ * Con DATABASE_URL: lee la cartera sincronizada del CRM (overrides aplicados).
+ * Sin DATABASE_URL: fallback a seed-data solo para demos/local (no es la fuente de prod).
+ */
 function hasDatabase() {
   return Boolean(process.env.DATABASE_URL);
 }

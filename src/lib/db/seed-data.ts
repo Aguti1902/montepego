@@ -1,3 +1,12 @@
+/**
+ * Datos semilla para:
+ * - arranque local sin DATABASE_URL
+ * - adaptador CRM `mock` (simula la API externa)
+ * - tests de sync/sanitize
+ *
+ * NO son una segunda fuente de negocio en staging/prod.
+ * Con DATABASE_URL + sync (`/api/sync`), la cartera sale del CRM → BD.
+ */
 import type { FeatureSlug } from "@/config/site";
 
 export type SeedProperty = {

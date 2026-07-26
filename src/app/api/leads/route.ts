@@ -3,6 +3,7 @@ import { createLead } from "@/lib/db/queries/leads";
 import { leadSchema } from "@/lib/validators/leads";
 import { sendTransactionalEmail } from "@/lib/email/client";
 import { leadConfirmationEmail } from "@/lib/email/templates";
+import { pushLeadToCrm } from "@/lib/crm/push-lead";
 
 export async function POST(request: Request) {
   try {
@@ -39,7 +40,24 @@ export async function POST(request: Request) {
       html: email.html,
     });
 
-    return NextResponse.json({ id: lead.id, status: lead.status }, { status: 201 });
+    const crmPush = await pushLeadToCrm(lead.id, {
+      name: data.name,
+      email: data.email,
+      phone: data.phone || undefined,
+      message: data.message || undefined,
+      locale: data.locale,
+      source: data.source,
+      propertyCrmId: data.propertyReference,
+    });
+
+    return NextResponse.json(
+      {
+        id: lead.id,
+        status: lead.status,
+        crm: crmPush,
+      },
+      { status: 201 },
+    );
   } catch (error) {
     console.error("createLead", error);
     return NextResponse.json(

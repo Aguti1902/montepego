@@ -7,6 +7,7 @@ import {
 } from "@/lib/ai/prompts/valuation";
 import { createValuation, updateValuationEstimate } from "@/lib/db/queries/valuations";
 import { createLead } from "@/lib/db/queries/leads";
+import { pushLeadToCrm } from "@/lib/crm/push-lead";
 
 export async function POST(request: Request) {
   const parsed = valuationSchema.safeParse(await request.json());
@@ -55,7 +56,7 @@ export async function POST(request: Request) {
     aiReasoning: ai.data.reasoning,
   });
 
-  await createLead({
+  const lead = await createLead({
     name: data.name,
     email: data.email,
     phone: data.phone || undefined,
@@ -63,6 +64,15 @@ export async function POST(request: Request) {
     message: `Valuation ${data.address}`,
     source: "valuation",
     preferences: { valuationId: valuation.id },
+  });
+
+  const crmPush = await pushLeadToCrm(lead.id, {
+    name: data.name,
+    email: data.email,
+    phone: data.phone || undefined,
+    message: `Valuation request: ${data.address}`,
+    locale: "en",
+    source: "valuation",
   });
 
   return NextResponse.json({
@@ -74,5 +84,6 @@ export async function POST(request: Request) {
       "Estimación orientativa. No constituye una tasación oficial.",
     costUsd: ai.costUsd,
     mocked: ai.mocked,
+    crm: crmPush,
   });
 }

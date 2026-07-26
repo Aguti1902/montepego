@@ -1,3 +1,8 @@
+/**
+ * Inserta el dataset de bootstrap en la BD.
+ * Tras el primer sync CRM (`npm`-equivalente: GET /api/sync), la cartera
+ * operativa es la del adaptador; este seed sirve para desarrollo y demos.
+ */
 import "dotenv/config";
 import { getDb } from "./index";
 import {

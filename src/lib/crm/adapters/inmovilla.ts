@@ -1,4 +1,4 @@
-import type { CrmAdapter } from "@/lib/crm/types";
+import { CrmApiError, type CrmAdapter } from "@/lib/crm/types";
 
 /**
  * Stub: implementar cuando el cliente confirme Inmovilla.
@@ -7,9 +7,21 @@ import type { CrmAdapter } from "@/lib/crm/types";
 export const inmovillaAdapter: CrmAdapter = {
   name: "inmovilla",
   async fetchProperties() {
-    throw new Error("Adaptador Inmovilla pendiente de configuración del cliente");
+    throw new CrmApiError(
+      "Adaptador Inmovilla pendiente de configuración del cliente",
+      { code: "unsupported", retryable: false },
+    );
   },
   async fetchProperty() {
-    throw new Error("Adaptador Inmovilla pendiente de configuración del cliente");
+    throw new CrmApiError(
+      "Adaptador Inmovilla pendiente de configuración del cliente",
+      { code: "unsupported", retryable: false },
+    );
+  },
+  async pushLead() {
+    throw new CrmApiError(
+      "pushLead Inmovilla pendiente de configuración del cliente",
+      { code: "unsupported", retryable: false },
+    );
   },
 };

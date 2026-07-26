@@ -1,0 +1,98 @@
+{
+  "Meta": {
+    "siteName": "MontePego Life",
+    "homeTitle": "Maisons avec vue mer et montagne à Monte Pego",
+    "homeDescription": "Agence familiale à Monte Pego, Costa Blanca. Villas, appartements et services locaux."
+  },
+  "Nav": {
+    "properties": "Propriétés",
+    "sell": "Vendre",
+    "about": "À propos",
+    "services": "Services",
+    "laCova": "La Cova",
+    "montePego": "Monte Pego",
+    "contact": "Contact"
+  },
+  "Home": {
+    "headline": "Mer, montagne et un lieu où appartenir",
+    "subhead": "Villas et appartements à Monte Pego, avec le soin d'une entreprise familiale qui gère aussi les services de la résidence.",
+    "searchCta": "Chercher des maisons",
+    "featured": "Maisons en vedette",
+    "moreThanAgency": "Plus qu'une agence",
+    "moreThanAgencyBody": "Centre de services, sécurité 24h, réception de colis et gastrobar La Cova — la vie dans la résidence, pas seulement une vente.",
+    "valuationCta": "Estimer votre bien",
+    "valuationBody": "Vous pensez vendre ? Commencez par une estimation indicative."
+  },
+  "Properties": {
+    "title": "Propriétés",
+    "filters": "Filtres",
+    "type": "Type",
+    "price": "Prix",
+    "bedrooms": "Chambres",
+    "features": "Caractéristiques",
+    "sort": "Trier",
+    "listView": "Liste",
+    "mapView": "Carte",
+    "noResults": "Aucun bien ne correspond à ces filtres. Élargissez la recherche ou contactez-nous.",
+    "ref": "Réf.",
+    "built": "Construit",
+    "plot": "Parcelle",
+    "sold": "Vendu",
+    "reserved": "Réservé"
+  },
+  "Property": {
+    "contact": "Se renseigner sur ce bien",
+    "similar": "Biens similaires",
+    "whatsapp": "WhatsApp",
+    "floorplan": "Plan",
+    "description": "Description"
+  },
+  "Contact": {
+    "title": "Contact",
+    "name": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "message": "Message",
+    "send": "Envoyer le message",
+    "success": "Message envoyé. Nous vous répondrons bientôt.",
+    "error": "Impossible d'envoyer le message. Réessayez ou appelez le bureau."
+  },
+  "Sell": {
+    "title": "Vendre avec MontePego Life",
+    "intro": "Connaissance locale, conseils honnêtes et un parcours clair de l'estimation aux clés.",
+    "valuationTitle": "Estimation indicative",
+    "disclaimer": "Il s'agit d'une estimation indicative, pas d'une expertise officielle."
+  },
+  "Services": {
+    "title": "Services de la résidence",
+    "intro": "Réception, courrier, colis et sécurité 24h pour les résidents de Monte Pego."
+  },
+  "About": {
+    "title": "Une entreprise familiale à Monte Pego",
+    "intro": "Nous vivons et travaillons dans la résidence. Confiance, racines locales et tranquillité."
+  },
+  "LaCova": {
+    "title": "Gastrobar La Cova",
+    "intro": "La table du quartier — ouverte aux résidents et visiteurs."
+  },
+  "MontePego": {
+    "title": "Vivre à Monte Pego",
+    "intro": "Climat, communauté, accès et vie quotidienne entre mer et montagne."
+  },
+  "Legal": {
+    "legalNotice": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "cookies": "Politique cookies"
+  },
+  "Footer": {
+    "rights": "Tous droits réservés",
+    "address": "Edificio Rosario, Avd. Internacional Nº1, Monte Pego, 03780 Pego, Alicante"
+  },
+  "Common": {
+    "loading": "Chargement…",
+    "back": "Retour",
+    "learnMore": "En savoir plus",
+    "viewVilla": "Voir la villa",
+    "viewHome": "Voir le bien"
+  }
+}

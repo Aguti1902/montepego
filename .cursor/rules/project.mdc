@@ -1,0 +1,10 @@
+---
+description: Contexto completo del proyecto MontePego Life
+alwaysApply: true
+---
+
+Lee y sigue en todo momento el archivo PROJECT.md de la raíz del
+repositorio. Es la especificación completa y vinculante del proyecto.
+Ante cualquier duda de alcance, stack, modelo de datos o diseño,
+PROJECT.md manda. No pidas confirmación para avanzar: ejecuta y
+registra las decisiones en DECISIONS.md.

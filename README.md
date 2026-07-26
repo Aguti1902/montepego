@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MontePego Life
 
-## Getting Started
+Web y panel de MontePego Life (Monte Pego, Alicante). Especificación completa en [`PROJECT.md`](./PROJECT.md).
 
-First, run the development server:
+## Stack
+
+Next.js (App Router) · TypeScript · Tailwind CSS v4 · Supabase · Drizzle · Zod · next-intl · Vitest
+
+## Arranque local
+
+1. Copia variables de entorno:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Rellena al menos:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `DATABASE_URL` (connection string Postgres de Supabase)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Aplica esquema y datos semilla:
 
-## Learn More
+```bash
+# Opción A: SQL completo con RLS
+psql "$DATABASE_URL" -f supabase/migrations/0001_init.sql
 
-To learn more about Next.js, take a look at the following resources:
+# Opción B: Drizzle push (sin políticas RLS; aplica después el SQL de RLS)
+npm run db:push
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+npm run db:seed
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. Desarrollo:
 
-## Deploy on Vercel
+```bash
+npm install
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+La web pública vive en `/[locale]/…` (EN por defecto). El panel en `/admin` (siempre en español).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Sin credenciales de Supabase la UI arranca con datos semilla en memoria (`src/lib/db/seed-data.ts`). Auth y persistencia requieren Supabase.
+
+## Scripts
+
+| Script | Uso |
+|---|---|
+| `npm run dev` | Servidor de desarrollo |
+| `npm run build` | Build de producción |
+| `npm run test` | Vitest |
+| `npm run db:push` | Empuja esquema Drizzle |
+| `npm run db:seed` | Inserta propiedades y páginas semilla |
+| `npm run lint` | ESLint |
+
+## Despliegue
+
+Vercel, con entornos staging y producción. Variables según `.env.example`. Cron de sincronización CRM en `/api/sync` (bloque 3).
+
+## Documentación de proceso
+
+- `PROJECT.md` — especificación vinculante
+- `PROGRESS.md` — checklist de bloques
+- `DECISIONS.md` — decisiones tomadas en el camino

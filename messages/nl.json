@@ -1,0 +1,98 @@
+{
+  "Meta": {
+    "siteName": "MontePego Life",
+    "homeTitle": "Woningen met zee- en bergzicht in Monte Pego",
+    "homeDescription": "Familie-makelaarskantoor in Monte Pego, Costa Blanca. Villa's, appartementen en lokale diensten."
+  },
+  "Nav": {
+    "properties": "Woningen",
+    "sell": "Verkopen",
+    "about": "Over ons",
+    "services": "Diensten",
+    "laCova": "La Cova",
+    "montePego": "Monte Pego",
+    "contact": "Contact"
+  },
+  "Home": {
+    "headline": "Zee, berg en een plek om bij te horen",
+    "subhead": "Villa's en appartementen in Monte Pego, met de zorg van een familiebedrijf dat ook de residenciële diensten runt.",
+    "searchCta": "Zoek woningen",
+    "featured": "Uitgelichte woningen",
+    "moreThanAgency": "Meer dan een makelaar",
+    "moreThanAgencyBody": "Servicecentrum, 24u beveiliging, pakketontvangst en gastrobar La Cova — leven in de urbanisatie, niet alleen een verkoop.",
+    "valuationCta": "Waardeer uw woning",
+    "valuationBody": "Denkt u aan verkopen? Begin met een indicatieve schatting."
+  },
+  "Properties": {
+    "title": "Woningen",
+    "filters": "Filters",
+    "type": "Type",
+    "price": "Prijs",
+    "bedrooms": "Slaapkamers",
+    "features": "Kenmerken",
+    "sort": "Sorteren",
+    "listView": "Lijst",
+    "mapView": "Kaart",
+    "noResults": "Geen woningen passen bij deze filters. Verruim de zoekopdracht of neem contact op.",
+    "ref": "Ref.",
+    "built": "Bebouwd",
+    "plot": "Perceel",
+    "sold": "Verkocht",
+    "reserved": "Gereserveerd"
+  },
+  "Property": {
+    "contact": "Informeer over deze woning",
+    "similar": "Vergelijkbare woningen",
+    "whatsapp": "WhatsApp",
+    "floorplan": "Plattegrond",
+    "description": "Beschrijving"
+  },
+  "Contact": {
+    "title": "Contact",
+    "name": "Naam",
+    "email": "E-mail",
+    "phone": "Telefoon",
+    "message": "Bericht",
+    "send": "Bericht sturen",
+    "success": "Bericht verzonden. We reageren spoedig.",
+    "error": "Het bericht kon niet worden verzonden. Probeer opnieuw of bel het kantoor."
+  },
+  "Sell": {
+    "title": "Verkopen met MontePego Life",
+    "intro": "Lokale kennis, eerlijk advies en een duidelijk traject van taxatie tot sleutels.",
+    "valuationTitle": "Indicatieve waardering",
+    "disclaimer": "Dit is een indicatieve schatting, geen officiële taxatie."
+  },
+  "Services": {
+    "title": "Residenciële diensten",
+    "intro": "Receptie, post, pakketten en 24u beveiliging voor bewoners van Monte Pego."
+  },
+  "About": {
+    "title": "Een familiebedrijf in Monte Pego",
+    "intro": "We wonen en werken in de urbanisatie. Vertrouwen, lokale wortels en rustig leven."
+  },
+  "LaCova": {
+    "title": "Gastrobar La Cova",
+    "intro": "De buurttafel — open voor bewoners en bezoekers."
+  },
+  "MontePego": {
+    "title": "Wonen in Monte Pego",
+    "intro": "Klimaat, gemeenschap, bereikbaarheid en dagelijks leven tussen zee en berg."
+  },
+  "Legal": {
+    "legalNotice": "Juridische kennisgeving",
+    "privacy": "Privacybeleid",
+    "cookies": "Cookiebeleid"
+  },
+  "Footer": {
+    "rights": "Alle rechten voorbehouden",
+    "address": "Edificio Rosario, Avd. Internacional Nº1, Monte Pego, 03780 Pego, Alicante"
+  },
+  "Common": {
+    "loading": "Laden…",
+    "back": "Terug",
+    "learnMore": "Meer informatie",
+    "viewVilla": "Bekijk de villa",
+    "viewHome": "Bekijk de woning"
+  }
+}

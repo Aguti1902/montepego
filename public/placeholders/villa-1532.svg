@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1067" viewBox="0 0 1600 1067" role="img" aria-label="MontePego placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#094D88"/>
+      <stop offset="100%" stop-color="#C8763F"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1067" fill="url(#g)"/>
+  <path d="M0 661.54 Q 400.0 512.16 800.0 618.86 T 1600 533.5 V 1067 H 0 Z" fill="#EDE8DF" opacity="0.35"/>
+  <text x="50%" y="50%" text-anchor="middle" fill="#EDE8DF" font-family="Georgia, serif" font-size="36" opacity="0.9">MontePego Life</text>
+  <text x="50%" y="58%" text-anchor="middle" fill="#EDE8DF" font-family="sans-serif" font-size="20" opacity="0.75">villa 1532</text>
+</svg>

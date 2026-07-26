@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img" aria-label="MontePego placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#094D88"/>
+      <stop offset="100%" stop-color="#6E97B8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#g)"/>
+  <path d="M0 669.6 Q 480.0 518.4 960.0 626.4 T 1920 540.0 V 1080 H 0 Z" fill="#EDE8DF" opacity="0.35"/>
+  <text x="50%" y="50%" text-anchor="middle" fill="#EDE8DF" font-family="Georgia, serif" font-size="42" opacity="0.9">MontePego Life</text>
+  <text x="50%" y="58%" text-anchor="middle" fill="#EDE8DF" font-family="sans-serif" font-size="20" opacity="0.75">hero monte pego</text>
+</svg>

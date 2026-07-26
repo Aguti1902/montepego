@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AdminNav } from "@/components/admin/admin-nav";
 
 export const metadata: Metadata = {
   title: "Panel — MontePego Life",
@@ -17,7 +18,10 @@ export default function AdminLayout({
           MontePego Life — Panel
         </p>
       </header>
-      <div className="mx-auto max-w-6xl px-6 py-8">{children}</div>
+      <div className="mx-auto max-w-6xl space-y-6 px-6 py-8">
+        <AdminNav />
+        {children}
+      </div>
     </div>
   );
 }

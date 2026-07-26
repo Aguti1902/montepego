@@ -4,25 +4,25 @@ import { Link } from "@/lib/i18n/navigation";
 import { Badge } from "@/components/ui/badge";
 import { ElevationStrip } from "@/components/property/elevation-strip";
 import { formatPrice } from "@/lib/utils";
-import type { SeedProperty } from "@/lib/db/seed-data";
+import type { ResolvedProperty } from "@/lib/db/types";
 
 type PropertyCardProps = {
-  property: SeedProperty;
+  property: ResolvedProperty;
   locale: string;
 };
 
 export async function PropertyCard({ property, locale }: PropertyCardProps) {
   const t = await getTranslations("Properties");
   const common = await getTranslations("Common");
-  const title = property.titles[locale] ?? property.titles.en;
+  const cover = property.coverUrl ?? "/placeholders/hero-monte-pego.svg";
 
   return (
     <article className="group flex flex-col overflow-hidden border border-border bg-card">
       <Link href={{ pathname: "/property/[slug]", params: { slug: property.slug } }}>
         <div className="relative aspect-[3/2] overflow-hidden bg-muted">
           <Image
-            src={property.coverPlaceholder}
-            alt={title}
+            src={cover}
+            alt={property.title}
             fill
             className="object-cover transition-opacity duration-300 group-hover:opacity-95"
             sizes="(max-width: 768px) 100vw, 33vw"
@@ -44,16 +44,18 @@ export async function PropertyCard({ property, locale }: PropertyCardProps) {
           <p className="text-xs uppercase tracking-wide text-muted-foreground">
             {t("ref")} {property.reference}
           </p>
-          <p className="tabular text-lg font-medium text-sea-deep">
-            {formatPrice(property.price, locale)}
-          </p>
+          {property.priceVisible ? (
+            <p className="tabular text-lg font-medium text-sea-deep">
+              {formatPrice(property.price, locale)}
+            </p>
+          ) : null}
         </div>
         <h3 className="font-display text-xl leading-snug text-ink">
           <Link
             href={{ pathname: "/property/[slug]", params: { slug: property.slug } }}
             className="hover:text-sea-deep"
           >
-            {title}
+            {property.title}
           </Link>
         </h3>
         <p className="tabular text-sm text-muted-foreground">

@@ -2,8 +2,13 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ElevationStrip } from "@/components/property/elevation-strip";
+import { PropertyCard } from "@/components/property/property-card";
 import { Badge } from "@/components/ui/badge";
-import { seedProperties } from "@/lib/db/seed-data";
+import { ContactForm } from "@/components/forms/contact-form";
+import {
+  getPropertyBySlug,
+  getSimilarProperties,
+} from "@/lib/db/queries/properties";
 import { formatPrice } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 
@@ -17,19 +22,18 @@ export default async function PropertyPage({ params }: Props) {
   const t = await getTranslations("Property");
   const tp = await getTranslations("Properties");
 
-  const property = seedProperties.find((p) => p.slug === slug);
+  const property = await getPropertyBySlug(slug, locale);
   if (!property) notFound();
 
-  const title = property.titles[locale] ?? property.titles.en;
-  const description =
-    property.descriptions[locale] ?? property.descriptions.en;
+  const similar = await getSimilarProperties(property, locale, 3);
+  const cover = property.coverUrl ?? "/placeholders/hero-monte-pego.svg";
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <div className="relative aspect-[16/9] overflow-hidden bg-muted">
         <Image
-          src={property.coverPlaceholder}
-          alt={title}
+          src={cover}
+          alt={property.title}
           fill
           className="object-cover"
           priority
@@ -49,10 +53,14 @@ export default async function PropertyPage({ params }: Props) {
               <Badge variant="reserved">{tp("reserved")}</Badge>
             )}
           </div>
-          <h1 className="mt-2 font-display text-4xl text-ink">{title}</h1>
-          <p className="mt-3 tabular text-2xl text-sea-deep">
-            {formatPrice(property.price, locale)}
-          </p>
+          <h1 className="mt-2 font-display text-4xl text-ink">
+            {property.title}
+          </h1>
+          {property.priceVisible ? (
+            <p className="mt-3 tabular text-2xl text-sea-deep">
+              {formatPrice(property.price, locale)}
+            </p>
+          ) : null}
           <ElevationStrip
             className="mt-4"
             elevation={property.elevation}
@@ -70,17 +78,15 @@ export default async function PropertyPage({ params }: Props) {
           </p>
           <h2 className="mt-8 font-display text-2xl">{t("description")}</h2>
           <p className="mt-3 max-w-2xl leading-relaxed text-foreground/90">
-            {description}
+            {property.description}
           </p>
         </div>
         <aside className="h-fit border border-border bg-card p-5 lg:sticky lg:top-6">
-          <h2 className="font-display text-xl">{t("contact")}</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            {siteConfig.contact.phones[0]}
-          </p>
+          <h2 className="mb-4 font-display text-xl">{t("contact")}</h2>
+          <ContactForm propertyId={property.id.startsWith("seed-") ? undefined : property.id} />
           <a
-            className="mt-4 inline-flex h-10 items-center justify-center rounded-[var(--radius)] bg-[#25D366] px-4 text-sm font-medium text-white"
-            href={`https://wa.me/${siteConfig.contact.whatsapp.replace("+", "")}`}
+            className="mt-4 inline-flex h-10 w-full items-center justify-center rounded-[var(--radius)] bg-[#25D366] px-4 text-sm font-medium text-white"
+            href={`https://wa.me/${siteConfig.contact.whatsapp.replace("+", "")}?text=${encodeURIComponent(`Ref ${property.reference}`)}`}
             target="_blank"
             rel="noreferrer"
           >
@@ -88,6 +94,16 @@ export default async function PropertyPage({ params }: Props) {
           </a>
         </aside>
       </div>
+      {similar.length > 0 ? (
+        <section className="mt-16">
+          <h2 className="font-display text-3xl">{t("similar")}</h2>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {similar.map((item) => (
+              <PropertyCard key={item.id} property={item} locale={locale} />
+            ))}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }

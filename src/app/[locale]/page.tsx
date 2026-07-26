@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/i18n/navigation";
 import { buttonVariants } from "@/components/ui/button";
 import { PropertyCard } from "@/components/property/property-card";
-import { seedProperties } from "@/lib/db/seed-data";
+import { getFeaturedProperties } from "@/lib/db/queries/properties";
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -13,10 +13,7 @@ export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Home");
-
-  const featured = seedProperties
-    .filter((p) => p.isFeatured && p.status === "available")
-    .slice(0, 6);
+  const featured = await getFeaturedProperties(locale, 6);
 
   return (
     <>
@@ -64,7 +61,7 @@ export default async function HomePage({ params }: Props) {
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((property) => (
             <PropertyCard
-              key={property.reference}
+              key={property.id}
               property={property}
               locale={locale}
             />

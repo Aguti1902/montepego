@@ -11,3 +11,6 @@ Registro de decisiones tomadas por cuenta propia durante la construcción del pr
 | 2026-07-26 | UI pública usa `seed-data.ts` hasta conectar `DATABASE_URL` | Permite ver la app completa sin Supabase; las queries de dominio hacen fallback a semilla |
 | 2026-07-26 | Se mantiene `middleware.ts` (aviso Next 16 → proxy) | next-intl + sesión Supabase dependen del middleware actual; migrar a proxy cuando el ecosistema lo estabilice |
 | 2026-07-26 | Mapa de redirecciones legacy mínimo + TODO(cliente) | No hay inventario completo de URLs WP; ampliar antes del lanzamiento |
+| 2026-07-26 | Feed XML prioritario: Kyero (Idealista/Fotocasa pendientes de acceso) | `PENDING_PORTAL_FEEDS`; Kyero no requiere credenciales de portal para el XML |
+| 2026-07-26 | IA y email con fallback mock si faltan API keys | Permite E2E y demos locales; el coste se registra igual |
+| 2026-07-26 | Portales con memoria local hasta auth de roles en Supabase | Flujos visibles sin BD; esquema RLS en `0002_portals.sql` |

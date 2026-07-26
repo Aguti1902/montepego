@@ -11,7 +11,9 @@ export async function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/admin") ||
     pathname.startsWith("/api") ||
-    pathname.startsWith("/portal")
+    pathname.startsWith("/portal") ||
+    pathname.startsWith("/robots") ||
+    pathname.startsWith("/sitemap")
   ) {
     return updateSession(request);
   }

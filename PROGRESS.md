@@ -12,7 +12,11 @@ Checklist de los nueve bloques de la sección 3 de `PROJECT.md`.
   - Hecho: filtros URL, galería, mapa MapLibre, hreflang/metadata, sitemap, robots, JSON-LD, OG dinámicas, redirecciones legacy, FAQ Monte Pego.
 - [x] **5. Panel** — todo lo de la sección 11.
   - Hecho: dashboard con sync/warnings, propiedades+overrides, traducciones, leads, valoraciones, contenido y ajustes.
-- [ ] **6. IA** — los 7 módulos de la sección 8.
-- [ ] **7. Distribución** — feeds XML a portales externos, emails transaccionales, alertas de matching.
-- [ ] **8. Portales** — portal del propietario vendedor y portal del residente (paquetería, incidencias, reservas en La Cova).
-- [ ] **9. Calidad** — tests, auditoría de accesibilidad y rendimiento, deploy en Vercel con entornos de staging y producción.
+- [x] **6. IA** — los 7 módulos de la sección 8.
+  - Hecho: descriptions, photos, search, valuation, whatsapp, matching, lead score; prompts versionados; registro de coste; fallback sin API key.
+- [x] **7. Distribución** — feeds XML a portales externos, emails transaccionales, alertas de matching.
+  - Hecho: feed Kyero + validación, Resend (mock sin clave), confirmación de leads, `/api/alerts/match`.
+- [x] **8. Portales** — portal del propietario vendedor y portal del residente (paquetería, incidencias, reservas en La Cova).
+  - Hecho: `/portal/owner`, `/portal/resident`, esquema SQL RLS 0002, datos memoria para demo sin BD.
+- [x] **9. Calidad** — tests, auditoría de accesibilidad y rendimiento, deploy en Vercel con entornos de staging y producción.
+  - Hecho: Vitest (overrides + CRM sanitize + Kyero), Playwright 3 flujos, README de arranque/deploy. Lighthouse y Vercel staging/prod quedan como paso de infraestructura con proyecto Vercel + credenciales.

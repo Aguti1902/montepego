@@ -17,31 +17,37 @@ export function ContactForm({ propertyId }: ContactFormProps) {
   const [pending, startTransition] = useTransition();
   const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
 
-  function onSubmit(formData: FormData) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
     startTransition(async () => {
       setStatus("idle");
       const payload = {
         name: String(formData.get("name") ?? ""),
         email: String(formData.get("email") ?? ""),
-        phone: String(formData.get("phone") ?? ""),
-        message: String(formData.get("message") ?? ""),
+        phone: String(formData.get("phone") ?? "") || undefined,
+        message: String(formData.get("message") ?? "") || undefined,
         locale,
         propertyId,
         source: "form" as const,
       };
 
-      const response = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      setStatus(response.ok ? "ok" : "error");
+      try {
+        const response = await fetch("/api/leads", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        setStatus(response.ok ? "ok" : "error");
+      } catch {
+        setStatus("error");
+      }
     });
   }
 
   return (
-    <form action={onSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="name">{t("name")}</Label>
         <Input id="name" name="name" required />

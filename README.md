@@ -1,62 +1,77 @@
 # MontePego Life
 
-Web y panel de MontePego Life (Monte Pego, Alicante). Especificación completa en [`PROJECT.md`](./PROJECT.md).
+Web, panel y portales de MontePego Life (Monte Pego, Alicante). Especificación completa en [`PROJECT.md`](./PROJECT.md).
 
 ## Stack
 
-Next.js (App Router) · TypeScript · Tailwind CSS v4 · Supabase · Drizzle · Zod · next-intl · Vitest
+Next.js (App Router) · TypeScript · Tailwind CSS v4 · Supabase · Drizzle · Zod · next-intl · MapLibre · Anthropic · Resend · Vitest · Playwright
 
 ## Arranque local
 
-1. Copia variables de entorno:
-
 ```bash
 cp .env.example .env.local
-```
-
-2. Rellena al menos:
-
-- `NEXT_PUBLIC_SUPABASE_URL`
-- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-- `DATABASE_URL` (connection string Postgres de Supabase)
-
-3. Aplica esquema y datos semilla:
-
-```bash
-# Opción A: SQL completo con RLS
-psql "$DATABASE_URL" -f supabase/migrations/0001_init.sql
-
-# Opción B: Drizzle push (sin políticas RLS; aplica después el SQL de RLS)
-npm run db:push
-
-npm run db:seed
-```
-
-4. Desarrollo:
-
-```bash
 npm install
 npm run dev
 ```
 
-La web pública vive en `/[locale]/…` (EN por defecto). El panel en `/admin` (siempre en español).
+Sin `DATABASE_URL` la UI funciona con datos semilla (`src/lib/db/seed-data.ts`). Auth persistente y sync CRM requieren Supabase.
 
-Sin credenciales de Supabase la UI arranca con datos semilla en memoria (`src/lib/db/seed-data.ts`). Auth y persistencia requieren Supabase.
+### Con Supabase
+
+1. Rellena en `.env.local`:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `DATABASE_URL`
+2. Aplica esquema:
+
+```bash
+psql "$DATABASE_URL" -f supabase/migrations/0001_init.sql
+psql "$DATABASE_URL" -f supabase/migrations/0002_portals.sql
+# o: npm run db:push && aplicar RLS a mano desde los SQL
+npm run db:seed
+```
+
+## Variables de entorno
+
+Ver [`.env.example`](./.env.example):
+
+| Variable | Uso |
+|---|---|
+| `DATABASE_URL` | Postgres Supabase |
+| `NEXT_PUBLIC_SUPABASE_*` | Auth cliente/servidor |
+| `ANTHROPIC_API_KEY` | Módulos IA (sin clave → fallback mock registrado) |
+| `RESEND_API_KEY` / `EMAIL_FROM` | Emails transaccionales |
+| `CRON_SECRET` | Protege `/api/sync` y alertas |
+| `CRM_ADAPTER` | `mock` por defecto |
+| `NEXT_PUBLIC_SITE_URL` | Canonical / sitemap / feeds |
 
 ## Scripts
 
 | Script | Uso |
 |---|---|
-| `npm run dev` | Servidor de desarrollo |
-| `npm run build` | Build de producción |
+| `npm run dev` | Desarrollo |
+| `npm run build` | Build producción |
 | `npm run test` | Vitest |
+| `npm run test:e2e` | Playwright (3 flujos críticos) |
 | `npm run db:push` | Empuja esquema Drizzle |
-| `npm run db:seed` | Inserta propiedades y páginas semilla |
+| `npm run db:seed` | Semilla |
 | `npm run lint` | ESLint |
 
-## Despliegue
+## Rutas útiles
 
-Vercel, con entornos staging y producción. Variables según `.env.example`. Cron de sincronización CRM en `/api/sync` (bloque 3).
+- Web: `/en`, `/nl`, … (6 idiomas)
+- Panel: `/admin` (español)
+- Portales: `/portal/owner`, `/portal/resident`
+- Feed: `/api/feeds/kyero`
+- Sync CRM: `GET/POST /api/sync` (cron cada 30 min vía `vercel.json`)
+
+## Despliegue (Vercel)
+
+1. Importa el repo en Vercel.
+2. Crea dos entornos: **Preview/Staging** y **Production**.
+3. Configura las variables de `.env.example` en cada entorno.
+4. Conecta el dominio de staging (p. ej. `staging.montepegolife.com`) y producción.
+5. El cron de `/api/sync` queda definido en `vercel.json`.
 
 ## Documentación de proceso
 

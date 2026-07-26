@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/config/site";
 import { PropertyCard } from "@/components/property/property-card";
 import { PropertyFilters } from "@/components/property/property-filters";
+import { ConversationalSearch } from "@/components/property/conversational-search";
 import { listProperties } from "@/lib/db/queries/properties";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { Link } from "@/lib/i18n/navigation";
@@ -59,7 +60,8 @@ export default async function PropertiesPage({ params, searchParams }: Props) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       <h1 className="font-display text-4xl text-ink">{t("title")}</h1>
-      <div className="mt-6">
+      <div className="mt-6 space-y-4">
+        <ConversationalSearch />
         <Suspense fallback={null}>
           <PropertyFilters />
         </Suspense>

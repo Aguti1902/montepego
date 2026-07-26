@@ -12,6 +12,8 @@ export function ValuationForm() {
   const tc = useTranslations("Contact");
   const [pending, startTransition] = useTransition();
   const [status, setStatus] = useState<"idle" | "ok" | "error">("idle");
+  const [estimate, setEstimate] = useState<string | null>(null);
+  const [reasoning, setReasoning] = useState<string | null>(null);
 
   function onSubmit(formData: FormData) {
     startTransition(async () => {
@@ -34,13 +36,29 @@ export function ValuationForm() {
         condition: String(formData.get("condition") ?? ""),
       };
 
-      const response = await fetch("/api/valuations", {
+      const response = await fetch("/api/ai/valuation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      setStatus(response.ok ? "ok" : "error");
+      if (!response.ok) {
+        setStatus("error");
+        return;
+      }
+
+      const data = (await response.json()) as {
+        estimateMin?: number;
+        estimateMax?: number;
+        reasoning?: string;
+      };
+      if (data.estimateMin != null && data.estimateMax != null) {
+        setEstimate(
+          `${data.estimateMin.toLocaleString("en")} – ${data.estimateMax.toLocaleString("en")} €`,
+        );
+        setReasoning(data.reasoning ?? null);
+      }
+      setStatus("ok");
     });
   }
 
@@ -99,9 +117,16 @@ export function ValuationForm() {
         {t("valuationTitle")}
       </Button>
       {status === "ok" ? (
-        <p className="text-sm text-rosemary" role="status">
-          {tc("success")}
-        </p>
+        <div className="space-y-2 text-sm" role="status">
+          <p className="text-rosemary">{tc("success")}</p>
+          {estimate ? (
+            <p className="tabular text-sea-deep">Estimate: {estimate}</p>
+          ) : null}
+          {reasoning ? (
+            <p className="text-muted-foreground">{reasoning}</p>
+          ) : null}
+          <p className="text-muted-foreground">{t("disclaimer")}</p>
+        </div>
       ) : null}
       {status === "error" ? (
         <p className="text-sm text-destructive" role="alert">

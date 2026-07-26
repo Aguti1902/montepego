@@ -4,8 +4,10 @@ Checklist de los nueve bloques de la sección 3 de `PROJECT.md`.
 
 - [x] **1. Base** — proyecto, tokens de diseño, sistema de componentes, i18n con los 6 idiomas, esquema de BD completo en Supabase con RLS, autenticación y roles, datos semilla.
   - Hecho: Next.js 16 + Tailwind v4, tokens sección 9, UI base, next-intl (EN/NL/DE/FR/PL/ES), esquema Drizzle + SQL/RLS, Supabase auth helpers, seed-data + `db:seed`, home y rutas públicas esqueleto, panel stub, tests de overrides.
-- [ ] **2. Dominio** — capa de datos de propiedades con overrides aplicados, medios, traducciones, leads, valoraciones.
-- [ ] **3. CRM** — adaptador, saneamiento, sincronización programada, registro de incidencias.
+- [x] **2. Dominio** — capa de datos de propiedades con overrides aplicados, medios, traducciones, leads, valoraciones.
+  - Hecho: queries con overrides, medios/traducciones, APIs leads/valuations, formularios, fallback a semilla.
+- [x] **3. CRM** — adaptador, saneamiento, sincronización programada, registro de incidencias.
+  - Hecho: `CrmAdapter`, mock + stubs, sanitize Zod permisivo, `/api/sync` + cron 30 min, tests de saneamiento.
 - [ ] **4. Web pública** — todas las rutas de la sección 7, en los 6 idiomas, con SEO completo, sitemaps, schema.org, OG dinámicas y redirecciones desde la web antigua.
 - [ ] **5. Panel** — todo lo de la sección 11.
 - [ ] **6. IA** — los 7 módulos de la sección 8.

@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
+import { legacyRedirects } from "./src/lib/seo/redirects";
 
 const withNextIntl = createNextIntlPlugin("./src/lib/i18n/request.ts");
 
@@ -14,6 +15,13 @@ const nextConfig: NextConfig = {
         hostname: "*.supabase.co",
       },
     ],
+  },
+  async redirects() {
+    return legacyRedirects.map((rule) => ({
+      source: rule.source,
+      destination: rule.destination,
+      permanent: true,
+    }));
   },
 };
 

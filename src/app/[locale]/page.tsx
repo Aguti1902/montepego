@@ -1,13 +1,26 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/lib/i18n/navigation";
+import type { Locale } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { PropertyCard } from "@/components/property/property-card";
 import { getFeaturedProperties } from "@/lib/db/queries/properties";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ locale: string }>;
 };
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Meta" });
+  return buildPageMetadata({
+    locale: locale as Locale,
+    title: t("homeTitle"),
+    description: t("homeDescription"),
+    href: { pathname: "/" },
+  });
+}
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;

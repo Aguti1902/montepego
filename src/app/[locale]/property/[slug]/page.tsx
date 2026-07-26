@@ -1,20 +1,46 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/config/site";
 import { ElevationStrip } from "@/components/property/elevation-strip";
 import { PropertyCard } from "@/components/property/property-card";
+import { PropertyGallery } from "@/components/property/property-gallery";
+import { PropertyMap } from "@/components/property/property-map";
 import { Badge } from "@/components/ui/badge";
 import { ContactForm } from "@/components/forms/contact-form";
+import { JsonLd } from "@/components/seo/json-ld";
 import {
   getPropertyBySlug,
   getSimilarProperties,
 } from "@/lib/db/queries/properties";
 import { formatPrice } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
+import { buildPageMetadata, absoluteUrl } from "@/lib/seo/metadata";
+import { breadcrumbJsonLd, propertyJsonLd } from "@/lib/seo/jsonld";
+import { getPathname } from "@/lib/i18n/navigation";
+import { seedProperties } from "@/lib/db/seed-data";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
+
+export async function generateStaticParams() {
+  return seedProperties.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale, slug } = await params;
+  const property = await getPropertyBySlug(slug, locale);
+  if (!property) return {};
+  return buildPageMetadata({
+    locale: locale as Locale,
+    title: property.seoTitle ?? property.title,
+    description: property.seoDescription ?? property.description.slice(0, 155),
+    href: { pathname: "/property/[slug]", params: { slug } },
+    images: [
+      absoluteUrl(`/api/og/property?slug=${encodeURIComponent(slug)}`),
+    ],
+  });
+}
 
 export default async function PropertyPage({ params }: Props) {
   const { locale, slug } = await params;
@@ -26,20 +52,22 @@ export default async function PropertyPage({ params }: Props) {
   if (!property) notFound();
 
   const similar = await getSimilarProperties(property, locale, 3);
-  const cover = property.coverUrl ?? "/placeholders/hero-monte-pego.svg";
+  const path = getPathname({
+    locale,
+    href: { pathname: "/property/[slug]", params: { slug } },
+  });
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <div className="relative aspect-[16/9] overflow-hidden bg-muted">
-        <Image
-          src={cover}
-          alt={property.title}
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
-      </div>
+      <JsonLd data={propertyJsonLd(property, path)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Home", path: `/${locale}` },
+          { name: tp("title"), path: `/${locale}/properties` },
+          { name: property.title, path },
+        ])}
+      />
+      <PropertyGallery media={property.media} title={property.title} />
       <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_320px]">
         <div>
           <div className="flex flex-wrap items-center gap-3">
@@ -80,10 +108,23 @@ export default async function PropertyPage({ params }: Props) {
           <p className="mt-3 max-w-2xl leading-relaxed text-foreground/90">
             {property.description}
           </p>
+          <h2 className="mt-10 font-display text-2xl">Map</h2>
+          <div className="mt-4">
+            <PropertyMap
+              latitude={property.latitude}
+              longitude={property.longitude}
+              precision={property.locationPrecision}
+              label={property.title}
+            />
+          </div>
         </div>
         <aside className="h-fit border border-border bg-card p-5 lg:sticky lg:top-6">
           <h2 className="mb-4 font-display text-xl">{t("contact")}</h2>
-          <ContactForm propertyId={property.id.startsWith("seed-") ? undefined : property.id} />
+          <ContactForm
+            propertyId={
+              property.id.startsWith("seed-") ? undefined : property.id
+            }
+          />
           <a
             className="mt-4 inline-flex h-10 w-full items-center justify-center rounded-[var(--radius)] bg-[#25D366] px-4 text-sm font-medium text-white"
             href={`https://wa.me/${siteConfig.contact.whatsapp.replace("+", "")}?text=${encodeURIComponent(`Ref ${property.reference}`)}`}

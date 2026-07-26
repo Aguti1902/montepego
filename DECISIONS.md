@@ -10,3 +10,4 @@ Registro de decisiones tomadas por cuenta propia durante la construcción del pr
 | 2026-07-26 | Tiles MapLibre: OpenFreeMap (`https://tiles.openfreemap.org/styles/liberty`) | Proveedor gratuito sin API key, compatible con MapLibre GL |
 | 2026-07-26 | UI pública usa `seed-data.ts` hasta conectar `DATABASE_URL` | Permite ver la app completa sin Supabase; las queries de dominio hacen fallback a semilla |
 | 2026-07-26 | Se mantiene `middleware.ts` (aviso Next 16 → proxy) | next-intl + sesión Supabase dependen del middleware actual; migrar a proxy cuando el ecosistema lo estabilice |
+| 2026-07-26 | Mapa de redirecciones legacy mínimo + TODO(cliente) | No hay inventario completo de URLs WP; ampliar antes del lanzamiento |

@@ -1,6 +1,11 @@
+import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import type { Locale } from "@/config/site";
 import { PropertyCard } from "@/components/property/property-card";
+import { PropertyFilters } from "@/components/property/property-filters";
 import { listProperties } from "@/lib/db/queries/properties";
+import { buildPageMetadata } from "@/lib/seo/metadata";
+import { Link } from "@/lib/i18n/navigation";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -11,6 +16,17 @@ function num(value: string | string[] | undefined) {
   if (typeof value !== "string" || value === "") return undefined;
   const n = Number(value);
   return Number.isFinite(n) ? n : undefined;
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Properties" });
+  return buildPageMetadata({
+    locale: locale as Locale,
+    title: t("title"),
+    description: t("title"),
+    href: { pathname: "/properties" },
+  });
 }
 
 export default async function PropertiesPage({ params, searchParams }: Props) {
@@ -43,7 +59,12 @@ export default async function PropertiesPage({ params, searchParams }: Props) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
       <h1 className="font-display text-4xl text-ink">{t("title")}</h1>
-      <p className="mt-2 tabular text-sm text-muted-foreground">
+      <div className="mt-6">
+        <Suspense fallback={null}>
+          <PropertyFilters />
+        </Suspense>
+      </div>
+      <p className="mt-4 tabular text-sm text-muted-foreground">
         {total} · {page}/{totalPages}
       </p>
       {items.length === 0 ? (
@@ -59,6 +80,26 @@ export default async function PropertiesPage({ params, searchParams }: Props) {
           ))}
         </div>
       )}
+      {totalPages > 1 ? (
+        <nav className="mt-10 flex gap-3" aria-label="Pagination">
+          {page > 1 ? (
+            <Link
+              href={`/properties?page=${page - 1}` as "/properties"}
+              className="text-sm text-sea-deep hover:underline"
+            >
+              ←
+            </Link>
+          ) : null}
+          {page < totalPages ? (
+            <Link
+              href={`/properties?page=${page + 1}` as "/properties"}
+              className="text-sm text-sea-deep hover:underline"
+            >
+              →
+            </Link>
+          ) : null}
+        </nav>
+      ) : null}
     </div>
   );
 }

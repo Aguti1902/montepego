@@ -59,19 +59,19 @@ export default async function AdminPropertyDetailPage({ params }: Props) {
         Volver a propiedades
       </Link>
 
-      <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
+      <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+        <div className="min-w-0">
           <p className="text-sm uppercase tracking-wide text-muted-foreground">
             Ref. {property.reference}
           </p>
-          <h1 className="font-display text-3xl">{property.title}</h1>
+          <h1 className="font-display text-2xl break-words sm:text-3xl">{property.title}</h1>
           <p className="mt-2 tabular text-lg text-sea-deep">
             {formatPrice(property.price, "es")}
           </p>
         </div>
         <Link
           href={`/property/${property.slug}`}
-          className="rounded-full bg-limestone px-4 py-2 text-sm text-sea-deep hover:bg-[#e4dccf]"
+          className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-limestone px-4 py-2 text-sm text-sea-deep hover:bg-[#e4dccf] sm:w-auto"
           target="_blank"
         >
           Ver en web →

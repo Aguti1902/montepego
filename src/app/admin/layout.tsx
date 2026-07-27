@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AdminNav } from "@/components/admin/admin-nav";
+import { AdminMobileHeader } from "@/components/admin/admin-mobile-header";
 import { ChatWidget } from "@/components/ai/chat-widget";
 
 export const metadata: Metadata = {
@@ -31,18 +32,11 @@ export default function AdminLayout({
         </aside>
 
         <div className="flex min-w-0 flex-1 flex-col">
-          <header className="sticky top-0 z-20 border-b border-black/5 bg-white/70 px-4 py-3 backdrop-blur-xl md:px-6 md:py-4">
-            <div className="md:hidden">
-              <p className="font-display text-xl text-sea-deep">Panel</p>
-              <div className="mt-2 overflow-x-auto">
-                <AdminNav />
-              </div>
-            </div>
-            <p className="hidden text-sm text-muted-foreground md:block">
-              Panel de la agencia
-            </p>
+          <AdminMobileHeader />
+          <header className="sticky top-0 z-20 hidden border-b border-black/5 bg-white/70 px-6 py-4 backdrop-blur-xl md:block">
+            <p className="text-sm text-muted-foreground">Panel de la agencia</p>
           </header>
-          <main className="flex-1 px-4 py-6 md:px-8 md:py-8 lg:px-10">
+          <main className="flex-1 px-4 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] md:px-8 md:py-8 lg:px-10">
             {children}
           </main>
         </div>

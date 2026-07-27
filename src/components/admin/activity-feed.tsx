@@ -45,8 +45,8 @@ function ActivityRow({ item }: { item: DemoActivity }) {
   return (
     <>
       <div>
-        <p className="text-sm font-medium text-ink">{item.title}</p>
-        <p className="text-xs text-muted-foreground">{item.detail}</p>
+        <p className="min-w-0 text-sm font-medium text-ink">{item.title}</p>
+        <p className="min-w-0 text-xs text-muted-foreground">{item.detail}</p>
       </div>
       <div className="shrink-0 text-right">
         <span className="rounded-full bg-limestone px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-ink/60">

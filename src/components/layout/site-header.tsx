@@ -43,21 +43,26 @@ export function SiteHeader() {
       }
     }
     function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") setLangOpen(false);
+      if (event.key === "Escape") {
+        setLangOpen(false);
+        setOpen(false);
+      }
     }
+    document.body.style.overflow = open ? "hidden" : "";
     document.addEventListener("mousedown", onPointerDown);
     document.addEventListener("keydown", onKey);
     return () => {
+      document.body.style.overflow = "";
       document.removeEventListener("mousedown", onPointerDown);
       document.removeEventListener("keydown", onKey);
     };
-  }, []);
+  }, [open]);
 
   return (
     <header className="pointer-events-none absolute inset-x-0 top-0 z-40">
-      <div className="pointer-events-auto mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 pt-4">
-        <div className="flex w-full items-center justify-between gap-3 rounded-full border border-white/50 bg-white/85 px-3 py-2 shadow-[0_10px_40px_rgba(26,34,44,0.1)] backdrop-blur-xl md:px-4">
-          <Link href="/" className="relative flex h-10 w-[150px] shrink-0 items-center">
+      <div className="pointer-events-auto mx-auto flex max-w-6xl items-center justify-between gap-2 px-4 pt-[max(1rem,env(safe-area-inset-top))] sm:gap-3">
+        <div className="flex w-full items-center justify-between gap-2 rounded-full border border-white/50 bg-white/85 px-2.5 py-2 shadow-[0_10px_40px_rgba(26,34,44,0.1)] backdrop-blur-xl sm:gap-3 sm:px-4">
+          <Link href="/" className="relative flex h-10 w-[120px] shrink-0 items-center sm:w-[150px]">
             <Image
               src="/brand/logo.png"
               alt="MontePego Life"
@@ -88,7 +93,7 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={() => setLangOpen((value) => !value)}
-                className="inline-flex h-9 items-center gap-1.5 rounded-full bg-limestone/90 px-3 text-xs font-semibold uppercase tracking-wide text-sea-deep"
+                className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-limestone/90 px-3 text-xs font-semibold uppercase tracking-wide text-sea-deep"
                 aria-expanded={langOpen}
                 aria-haspopup="listbox"
               >
@@ -132,7 +137,7 @@ export function SiteHeader() {
 
             <button
               type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-sea-deep text-white xl:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-full bg-sea-deep text-white xl:hidden"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-label="Menu"
@@ -152,7 +157,7 @@ export function SiteHeader() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="rounded-xl px-3 py-2.5 text-sm font-medium text-ink hover:bg-limestone"
+                  className="flex min-h-11 items-center rounded-xl px-3 py-3 text-sm font-medium text-ink hover:bg-limestone"
                 >
                   {t(item.key)}
                 </Link>

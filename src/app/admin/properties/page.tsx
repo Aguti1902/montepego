@@ -67,7 +67,55 @@ export default async function AdminPropertiesPage({ searchParams }: Props) {
         <AdminPropertyFilters />
       </Suspense>
 
-      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_12px_36px_rgba(26,34,44,0.05)] ring-1 ring-black/5">
+      <div className="space-y-3 md:hidden">
+        {properties.map((property) => (
+          <div
+            key={property.id}
+            className="rounded-2xl bg-white p-4 shadow-[0_12px_36px_rgba(26,34,44,0.05)] ring-1 ring-black/5"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <p className="tabular text-sm text-muted-foreground">
+                Ref. {property.reference}
+              </p>
+              <span className="shrink-0 text-xs font-medium text-sea-deep">
+                {statusLabel[property.status] ?? property.status}
+              </span>
+            </div>
+            <p className="mt-2 font-medium leading-snug text-ink">
+              {property.title}
+            </p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {property.isFeatured ? (
+                <Badge className="rounded-full" variant="accent">
+                  Destacada
+                </Badge>
+              ) : null}
+              {!property.hasPhotos ? (
+                <Badge className="rounded-full" variant="sold">
+                  Sin fotos
+                </Badge>
+              ) : null}
+            </div>
+            <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
+              <p className="tabular text-lg font-medium text-sea-deep">
+                {formatPrice(property.price, "es")}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {property.builtArea ?? "—"} / {property.plotArea ?? "—"} m² ·{" "}
+                {property.pendingTranslations} trad.
+              </p>
+            </div>
+            <Link
+              href={`/admin/properties/${property.id}`}
+              className="mt-4 inline-flex min-h-11 w-full items-center justify-center rounded-full bg-limestone px-4 text-sm font-medium text-sea-deep hover:bg-[#e4dccf] sm:w-auto"
+            >
+              Editar
+            </Link>
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden overflow-hidden rounded-2xl bg-white shadow-[0_12px_36px_rgba(26,34,44,0.05)] ring-1 ring-black/5 md:block">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[780px] text-left text-sm">
             <thead className="border-b border-border/80 bg-[#dce8f5]">
@@ -118,7 +166,7 @@ export default async function AdminPropertiesPage({ searchParams }: Props) {
                   <td className="px-4 py-3 text-right">
                     <Link
                       href={`/admin/properties/${property.id}`}
-                      className="rounded-full bg-limestone px-3 py-1.5 text-sea-deep hover:bg-[#e4dccf]"
+                      className="inline-flex min-h-11 items-center rounded-full bg-limestone px-4 py-2 text-sea-deep hover:bg-[#e4dccf]"
                     >
                       Editar
                     </Link>

@@ -29,7 +29,7 @@ function isActive(pathname: string, href: string) {
   return pathname.startsWith(href);
 }
 
-export function AdminNav() {
+export function AdminNav({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
 
   return (
@@ -41,8 +41,9 @@ export function AdminNav() {
           <Link
             key={item.href}
             href={item.href}
+            onClick={onNavigate}
             className={cn(
-              "flex items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-medium transition",
+              "flex min-h-11 items-center gap-3 rounded-2xl px-3 py-2.5 text-sm font-medium transition",
               active
                 ? "bg-white text-sea-deep shadow-sm ring-1 ring-black/5"
                 : "text-white/80 hover:bg-white/10 hover:text-white",

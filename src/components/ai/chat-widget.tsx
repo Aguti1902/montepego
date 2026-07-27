@@ -68,7 +68,12 @@ export function ChatWidget({
   }
 
   return (
-    <div className={cn("fixed bottom-5 right-5 z-50", className)}>
+    <div
+      className={cn(
+        "fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] right-[max(1.25rem,env(safe-area-inset-right))] z-50",
+        className,
+      )}
+    >
       {open ? (
         <div className="mb-3 flex h-[min(520px,70vh)] w-[min(380px,calc(100vw-2rem))] flex-col overflow-hidden rounded-[1.75rem] border border-white/60 bg-white/95 shadow-[0_24px_60px_rgba(26,34,44,0.22)] backdrop-blur-xl">
           <div className="flex items-center justify-between bg-gradient-to-r from-sea-deep to-[#3a6aa3] px-4 py-3.5 text-white">

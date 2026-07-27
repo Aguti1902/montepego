@@ -23,7 +23,7 @@ export function AdminChartCard({
 }: AdminChartCardProps) {
   return (
     <AdminCard className={className}>
-      <h2 className="font-display text-xl">{title}</h2>
+      <h2 className="font-display text-lg sm:text-xl">{title}</h2>
       {description ? (
         <p className="mt-1 text-sm text-muted-foreground">{description}</p>
       ) : null}
@@ -86,7 +86,7 @@ export function AdminGroupedBarChart({
 
   const width = 100;
   const height = 52;
-  const padL = 10;
+  const padL = 12;
   const padR = 3;
   const padT = 5;
   const padB = 14;
@@ -127,10 +127,10 @@ export function AdminGroupedBarChart({
   });
 
   return (
-    <div>
+    <div className="-mx-1 overflow-x-auto px-1 sm:mx-0 sm:overflow-visible sm:px-0">
       <svg
         viewBox={`0 0 ${width} ${height}`}
-        className="h-48 w-full overflow-visible"
+        className="h-40 min-w-[280px] w-full max-w-full sm:h-48"
         role="img"
         aria-label={`${primaryLabel} y ${secondaryLabel} por día`}
       >
@@ -218,7 +218,7 @@ export function AdminGroupedBarChart({
                 ? padL + plotW / 2
                 : padL + (index / (count - 1)) * plotW;
             const showLabel =
-              count <= 7 || index % 2 === 0 || index === count - 1;
+              count <= 7 || index % 3 === 0 || index === count - 1;
             if (!showLabel) return null;
             return (
               <text
@@ -346,7 +346,7 @@ export function AdminDonutChart({
           ) : null}
         </div>
       </div>
-      <ul className="w-full max-w-xs space-y-2.5">
+      <ul className="w-full space-y-2.5 sm:max-w-xs">
         {data.map((item) => (
           <li
             key={item.label}

@@ -58,8 +58,8 @@ export default async function PropertiesPage({ params, searchParams }: Props) {
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
   return (
-    <div className="mx-auto max-w-6xl px-4 pb-12 pt-24">
-      <h1 className="font-display text-4xl text-ink">{t("title")}</h1>
+    <div className="mx-auto max-w-6xl px-4 pb-12 pt-20 sm:pt-24">
+      <h1 className="font-display text-3xl text-ink sm:text-4xl">{t("title")}</h1>
       <div className="mt-6 space-y-4">
         <ConversationalSearch />
         <Suspense fallback={null}>
@@ -83,19 +83,22 @@ export default async function PropertiesPage({ params, searchParams }: Props) {
         </div>
       )}
       {totalPages > 1 ? (
-        <nav className="mt-10 flex gap-3" aria-label="Pagination">
+        <nav className="mt-10 flex items-center gap-3" aria-label="Pagination">
           {page > 1 ? (
             <Link
               href={`/properties?page=${page - 1}` as "/properties"}
-              className="text-sm text-sea-deep hover:underline"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-limestone text-sm font-medium text-sea-deep hover:bg-[#e7dfd0]"
             >
               ←
             </Link>
           ) : null}
+          <span className="text-sm text-muted-foreground">
+            {page} / {totalPages}
+          </span>
           {page < totalPages ? (
             <Link
               href={`/properties?page=${page + 1}` as "/properties"}
-              className="text-sm text-sea-deep hover:underline"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-limestone text-sm font-medium text-sea-deep hover:bg-[#e7dfd0]"
             >
               →
             </Link>

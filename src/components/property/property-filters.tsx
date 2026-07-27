@@ -8,9 +8,6 @@ import { Select } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 
-const fieldClass =
-  "min-w-[7.5rem] flex-1 space-y-1.5 sm:min-w-[8.5rem] lg:min-w-0";
-
 const controlClass = "h-11 w-full min-w-0";
 
 export function PropertyFilters() {
@@ -30,7 +27,7 @@ export function PropertyFilters() {
 
   return (
     <form
-      className="flex flex-wrap items-end gap-3 rounded-[1.25rem] border border-border/80 bg-white/80 p-3 shadow-sm md:flex-nowrap md:gap-2.5 md:p-4 lg:gap-3"
+      className="grid grid-cols-2 gap-3 rounded-[1.25rem] border border-border/80 bg-white/80 p-3 shadow-sm sm:grid-cols-3 lg:flex lg:flex-nowrap lg:items-end lg:gap-2.5 lg:p-4"
       onSubmit={(event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -42,7 +39,7 @@ export function PropertyFilters() {
         router.push((query ? `${pathname}?${query}` : pathname) as "/" | "/properties");
       }}
     >
-      <div className={fieldClass}>
+      <div className="col-span-2 space-y-1.5 sm:col-span-1 lg:min-w-0 lg:flex-1">
         <Label htmlFor="type" className="text-xs text-muted-foreground">
           {t("type")}
         </Label>
@@ -60,7 +57,7 @@ export function PropertyFilters() {
           <option value="plot">Plot</option>
         </Select>
       </div>
-      <div className={fieldClass}>
+      <div className="space-y-1.5 lg:min-w-0 lg:flex-1">
         <Label htmlFor="minPrice" className="text-xs text-muted-foreground">
           {t("price")} min
         </Label>
@@ -72,7 +69,7 @@ export function PropertyFilters() {
           defaultValue={searchParams.get("minPrice") ?? ""}
         />
       </div>
-      <div className={fieldClass}>
+      <div className="space-y-1.5 lg:min-w-0 lg:flex-1">
         <Label htmlFor="maxPrice" className="text-xs text-muted-foreground">
           {t("price")} max
         </Label>
@@ -84,7 +81,7 @@ export function PropertyFilters() {
           defaultValue={searchParams.get("maxPrice") ?? ""}
         />
       </div>
-      <div className={fieldClass}>
+      <div className="space-y-1.5 lg:min-w-0 lg:flex-1">
         <Label htmlFor="bedrooms" className="text-xs text-muted-foreground">
           {t("bedrooms")}
         </Label>
@@ -103,7 +100,7 @@ export function PropertyFilters() {
           <option value="5">5+</option>
         </Select>
       </div>
-      <div className={fieldClass}>
+      <div className="space-y-1.5 lg:min-w-0 lg:flex-1">
         <Label htmlFor="sort" className="text-xs text-muted-foreground">
           {t("sort")}
         </Label>
@@ -119,7 +116,10 @@ export function PropertyFilters() {
           <option value="price_desc">Price ↓</option>
         </Select>
       </div>
-      <Button type="submit" className="h-11 shrink-0 px-6 md:ml-1">
+      <Button
+        type="submit"
+        className="col-span-2 h-11 w-full shrink-0 px-6 sm:col-span-3 lg:col-span-1 lg:w-auto"
+      >
         {t("filters")}
       </Button>
     </form>

@@ -44,12 +44,12 @@ export async function PropertyCard({ property, locale }: PropertyCardProps) {
         </div>
       </Link>
       <div className="flex flex-1 flex-col gap-3 p-5">
-        <div className="flex items-baseline justify-between gap-3">
-          <p className="text-xs uppercase tracking-wide text-muted-foreground">
+        <div className="flex min-w-0 items-baseline justify-between gap-3">
+          <p className="min-w-0 truncate text-xs uppercase tracking-wide text-muted-foreground">
             {t("ref")} {property.reference}
           </p>
           {property.priceVisible ? (
-            <p className="tabular text-lg font-medium text-sea-deep">
+            <p className="shrink-0 tabular text-lg font-medium text-sea-deep">
               {formatPrice(property.price, locale)}
             </p>
           ) : null}

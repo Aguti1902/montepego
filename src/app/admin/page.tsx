@@ -30,7 +30,7 @@ export default async function AdminDashboardPage() {
   const stats = await getAdminDashboardStats();
 
   return (
-    <div className="mx-auto max-w-5xl space-y-8">
+    <div className="mx-auto w-full max-w-5xl space-y-6 sm:space-y-8">
       <AdminPageHeader
         title="Inicio"
         description="Lo que necesitas hoy: clientes, viviendas y avisos."
@@ -38,7 +38,7 @@ export default async function AdminDashboardPage() {
           <form action={syncNowAction}>
             <button
               type="submit"
-              className="inline-flex items-center gap-2 rounded-full bg-sea-deep px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_28px_rgba(44,85,138,0.28)] hover:bg-[#244872]"
+              className="inline-flex w-full min-h-11 items-center justify-center gap-2 rounded-full bg-sea-deep px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_28px_rgba(44,85,138,0.28)] hover:bg-[#244872] sm:w-auto"
             >
               <RefreshCw className="h-4 w-4" aria-hidden />
               Importar del CRM
@@ -82,7 +82,7 @@ export default async function AdminDashboardPage() {
         <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
           Esta semana
         </h2>
-        <div className="grid gap-3 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <AdminStatPill
             label="Leads nuevos"
             value={stats.leads.new}

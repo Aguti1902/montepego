@@ -68,6 +68,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -85,6 +86,7 @@ html {
 }
 
 body {
+  overflow-x: clip;
   background-color: var(--background);
   background-image:
     radial-gradient(ellipse 140% 100% at 50% -30%, rgba(44, 85, 138, 0.055), transparent 58%),
@@ -93,6 +95,12 @@ body {
   background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
 }
 
 .page-surface {

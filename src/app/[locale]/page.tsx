@@ -73,7 +73,7 @@ export default async function HomePage({ params, searchParams }: Props) {
 
   return (
     <>
-      <section className="relative isolate min-h-[86vh] overflow-hidden md:min-h-[90vh]">
+      <section className="relative isolate min-h-[78vh] overflow-hidden sm:min-h-[86vh] md:min-h-[90vh]">
         <Image
           src={montePegoMedia.hero}
           alt=""
@@ -82,12 +82,12 @@ export default async function HomePage({ params, searchParams }: Props) {
           className="animate-hero-zoom object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/80 via-ink/45 to-transparent" />
-        <div className="relative mx-auto flex min-h-[86vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-28 md:min-h-[90vh]">
-          <p className="animate-fade-up font-display text-5xl leading-[0.95] text-white md:text-7xl lg:text-8xl">
+        <div className="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/55 to-ink/20 sm:from-ink/80 sm:via-ink/45 sm:to-transparent" />
+        <div className="relative mx-auto flex min-h-[78vh] max-w-6xl flex-col justify-end px-4 pb-12 pt-24 sm:min-h-[86vh] sm:pb-16 sm:pt-28 md:min-h-[90vh]">
+          <p className="animate-fade-up font-display text-4xl leading-[0.95] text-white sm:text-5xl md:text-7xl lg:text-8xl">
             MontePego Life
           </p>
-          <h1 className="animate-fade-up-delay mt-5 max-w-xl text-lg text-white/95 md:text-2xl">
+          <h1 className="animate-fade-up-delay mt-4 max-w-xl text-base text-white/95 sm:mt-5 sm:text-lg md:text-2xl">
             {t("headline")}
           </h1>
           <p className="animate-fade-up-delay mt-3 max-w-lg text-base text-white/80">

@@ -73,10 +73,10 @@ function SpecRow({
   overridden?: boolean;
 }) {
   return (
-    <div className="flex items-center justify-between gap-4 px-3 py-2 text-sm">
-      <dt className="text-muted-foreground">{label}</dt>
-      <dd className="flex items-center gap-2 text-right font-medium tabular">
-        <span>{value}</span>
+    <div className="flex min-w-0 items-start justify-between gap-3 px-3 py-2.5 text-sm sm:items-center">
+      <dt className="shrink-0 text-muted-foreground">{label}</dt>
+      <dd className="flex min-w-0 items-center justify-end gap-2 text-right font-medium tabular">
+        <span className="truncate">{value}</span>
         {overridden ? (
           <span className="rounded-full bg-rosemary/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase text-rosemary">
             Manual

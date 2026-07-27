@@ -20,7 +20,7 @@ export function AdminPropertyFilters() {
   return (
     <div
       className={cn(
-        "grid gap-3 rounded-2xl p-4 sm:grid-cols-2 lg:grid-cols-4",
+        "grid grid-cols-1 gap-3 rounded-2xl p-4 sm:grid-cols-2 lg:grid-cols-4",
         adminToneBox("cream"),
       )}
     >

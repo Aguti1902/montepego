@@ -1,0 +1,449 @@
+{
+  "site": {
+    "hero": "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_5340-scaled-1-r2gw69gpmot7kfvzoy6vpp8sd3rz721u5jc7udg6fc.jpg",
+    "logo": "https://montepegolife.com/wp-content/uploads/2025/03/logo-montepego-con-copy.png",
+    "services": [
+      "https://montepegolife.com/wp-content/uploads/2025/03/IMG_5340-scaled-1.jpg",
+      "https://montepegolife.com/wp-content/uploads/2025/03/IDc5758d01-0000-0500-0000-000014920d10-4-scaled-1.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_5411-scaled-1-r2gw6iv3j162sjic6295emveayhnc135itv2n528p4.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_5340-scaled-1-r2gw69gpmot7kfvzoy6vpp8sd3rz721u5jc7udg6fc.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_5336-scaled-1-r2gw6gzf5d3i5bl2h1fw9nch46qwwmvoukk3ol511k.jpg",
+      "https://montepegolife.com/wp-content/uploads/2025/06/4-1.webp",
+      "https://montepegolife.com/wp-content/uploads/2025/06/3-1.webp",
+      "https://montepegolife.com/wp-content/uploads/2025/06/2-1.webp"
+    ],
+    "residential": [
+      "https://montepegolife.com/wp-content/uploads/2025/03/IDc5758d01-0000-0500-0000-000014920d10-4-scaled-1.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9489-scaled-rosx5ns1fz81z3l3a7cjuivvn75eo3eugdcx08oix0.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9482-scaled-rosx4un1k445z6rf0cr4788l89511h760d4v4nvq9w.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9480-scaled-rosx4o2689v5px0z2rwq7rwd2k1gjlh1ngkgrq5hhg.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9478-scaled-rosx4dpy53h067fzr5ftyciajbgf6xbzy1e4hoktdw.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9477-scaled-rosx482x039a8jo6o302jdxiz087wqplx9h7m0t6f8.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9471-scaled-rosx3pa57ejjscfhpuvj5iob3asvmsmz6ofi0hl1vo.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9469-scaled-rosx3exx485e8muie8emw3a8k27ua4hxh995qg0ds4.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9466-scaled-rosx32q0ndoo1pc9dl4hhod8u1w2i25f3kruhuii10.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9465-scaled-rosx2y0tp7i8fnj3513cn7jxv4j8fkmrexif3gpgw4.jpg"
+    ],
+    "about": [
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9489-scaled-rosx5ns1fz81z3l3a7cjuivvn75eo3eugdcx08oix0.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9482-scaled-rosx4un1k445z6rf0cr4788l89511h760d4v4nvq9w.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9480-scaled-rosx4o2689v5px0z2rwq7rwd2k1gjlh1ngkgrq5hhg.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9478-scaled-rosx4dpy53h067fzr5ftyciajbgf6xbzy1e4hoktdw.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9477-scaled-rosx482x039a8jo6o302jdxiz087wqplx9h7m0t6f8.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9471-scaled-rosx3pa57ejjscfhpuvj5iob3asvmsmz6ofi0hl1vo.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9469-scaled-rosx3exx485e8muie8emw3a8k27ua4hxh995qg0ds4.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9466-scaled-rosx32q0ndoo1pc9dl4hhod8u1w2i25f3kruhuii10.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9465-scaled-rosx2y0tp7i8fnj3513cn7jxv4j8fkmrexif3gpgw4.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9464-scaled-rosx2sdsk7aihzra1ynl88z6atb15e0de5li7sxtxg.jpg"
+    ],
+    "laCova": [
+      "https://montepegolife.com/wp-content/uploads/2025/06/5-1.webp",
+      "https://montepegolife.com/wp-content/uploads/2025/06/4-1-1.webp",
+      "https://montepegolife.com/wp-content/uploads/2025/06/3-2.webp",
+      "https://montepegolife.com/wp-content/uploads/2025/06/2-1-1.webp",
+      "https://montepegolife.com/wp-content/uploads/2025/06/4-1-1-1024x1021.webp 1024w, https://montepegolife.com/wp-content/uploads/2025/06/4-1-1-300x300.webp 300w, https://montepegolife.com/wp-content/uploads/2025/06/4-1-1-150x150.webp 150w, https://montepegolife.com/wp-content/uploads/2025/06/4-1-1-768x766.webp 768w, https://montepegolife.com/wp-content/uploads/2025/06/4-1-1-1536x1531.webp 1536w, https://montepegolife.com/wp-content/uploads/2025/06/4-1-1.webp",
+      "https://montepegolife.com/wp-content/uploads/2025/06/1-1024x683.webp 1024w, https://montepegolife.com/wp-content/uploads/2025/06/1-300x200.webp 300w, https://montepegolife.com/wp-content/uploads/2025/06/1-768x512.webp 768w, https://montepegolife.com/wp-content/uploads/2025/06/1-1536x1024.webp 1536w, https://montepegolife.com/wp-content/uploads/2025/06/1-2048x1365.webp",
+      "https://montepegolife.com/wp-content/uploads/2025/06/1-1024x683.webp"
+    ],
+    "sell": [
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9489-scaled-rosx5ns1fz81z3l3a7cjuivvn75eo3eugdcx08oix0.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9482-scaled-rosx4un1k445z6rf0cr4788l89511h760d4v4nvq9w.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9480-scaled-rosx4o2689v5px0z2rwq7rwd2k1gjlh1ngkgrq5hhg.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9478-scaled-rosx4dpy53h067fzr5ftyciajbgf6xbzy1e4hoktdw.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9477-scaled-rosx482x039a8jo6o302jdxiz087wqplx9h7m0t6f8.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9471-scaled-rosx3pa57ejjscfhpuvj5iob3asvmsmz6ofi0hl1vo.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9469-scaled-rosx3exx485e8muie8emw3a8k27ua4hxh995qg0ds4.jpg",
+      "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_9466-scaled-rosx32q0ndoo1pc9dl4hhod8u1w2i25f3kruhuii10.jpg"
+    ]
+  },
+  "properties": {
+    "renovated-villa-with-panoramic-views": {
+      "reference": "1505",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0852-scaled-rqe5kbw50or6bmqmb42rlazbnbn6ikpk6wepaz5pz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0848-scaled-rqe5j3pq3h2p5yish2zau44nq7oxgsu6ctqvqyz83o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0837-scaled-rpnzw9dqdy452whcwmdkqvaxz8rtjhs6p4t0bb4ouc.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0834-scaled-rpnzvteh5ri9lj4khxgx2hc3voykwn0qyxpr5lsds4.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0833-scaled-rpnzvlvrn37z0nfhpu7wij8f4lzn726w9whvbe3j5w.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0832-scaled-rpnzved24exofrqexqyvyl4qdj0phhd1kv9zh6eojo.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled-rqe5fw3kquofhx6q8706tfayntis6136wxi5pxqnd0.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/WhatsApp-Image-2026-02-17-at-12.50.29-9.jpeg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/WhatsApp-Image-2026-02-17-at-12.50.29-8.jpeg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/WhatsApp-Image-2026-02-17-at-12.50.29-5.jpeg"
+      ]
+    },
+    "charming-villa-with-panoramic-views": {
+      "reference": "1532",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0852-scaled-rqe5kbw50or6bmqmb42rlazbnbn6ikpk6wepaz5pz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0848-scaled-rqe5j3pq3h2p5yish2zau44nq7oxgsu6ctqvqyz83o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0837-scaled-rpnzw9dqdy452whcwmdkqvaxz8rtjhs6p4t0bb4ouc.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0834-scaled-rpnzvteh5ri9lj4khxgx2hc3voykwn0qyxpr5lsds4.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0833-scaled-rpnzvlvrn37z0nfhpu7wij8f4lzn726w9whvbe3j5w.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0832-scaled-rpnzved24exofrqexqyvyl4qdj0phhd1kv9zh6eojo.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled-rqe5fw3kquofhx6q8706tfayntis6136wxi5pxqnd0.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/WhatsApp-Image-2026-07-13-at-12.59.37.jpeg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/WhatsApp-Image-2026-07-13-at-12.59.37-9.jpeg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/WhatsApp-Image-2026-07-13-at-12.59.37-7.jpeg"
+      ]
+    },
+    "elegant-villa-with-sea-mountain-views": {
+      "reference": "1530",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/2026/07/DJI_0852-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/DJI_0848-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0837-scaled-rpnzw9dqdy452whcwmdkqvaxz8rtjhs6p4t0bb4ouc.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0834-scaled-rpnzvteh5ri9lj4khxgx2hc3voykwn0qyxpr5lsds4.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0833-scaled-rpnzvlvrn37z0nfhpu7wij8f4lzn726w9whvbe3j5w.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0832-scaled-rpnzved24exofrqexqyvyl4qdj0phhd1kv9zh6eojo.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/IMG_4563.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/IMG_4562.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/07/IMG_4559_hdr.jpg"
+      ]
+    },
+    "a-peaceful-oasis-with-a-private-pool-independent-guest-apartments-and-spectacular-mountain-views": {
+      "reference": "1528",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/2026/06/DJI_0837-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/DJI_0834-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/DJI_0833-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/DJI_0832-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0852-scaled-rqe5kbw50or6bmqmb42rlazbnbn6ikpk6wepaz5pz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0848-scaled-rqe5j3pq3h2p5yish2zau44nq7oxgsu6ctqvqyz83o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled-rqe5fw3kquofhx6q8706tfayntis6136wxi5pxqnd0.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_4279_hdr.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_4276_hdr.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_4275.jpg"
+      ]
+    },
+    "mediterranean-villa-with-panoramic-sea-views": {
+      "reference": "1464",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_9489-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_9482-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_9480-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_9478-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_9477-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_9471-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_9469-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_9466-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_9465-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_9464-scaled.jpg"
+      ]
+    },
+    "mediterranean-views-independent-living": {
+      "reference": "1526",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/2026/06/DJI_0817-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/DJI_0815-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0852-scaled-rqe5kbw50or6bmqmb42rlazbnbn6ikpk6wepaz5pz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0848-scaled-rqe5j3pq3h2p5yish2zau44nq7oxgsu6ctqvqyz83o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled-rqe5fw3kquofhx6q8706tfayntis6136wxi5pxqnd0.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_3168.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_3167.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_3164_hdr.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_3161_hdr.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/06/IMG_3158_hdr.jpg"
+      ]
+    },
+    "mediterranean-escape-with-guest-apartment": {
+      "reference": "1524",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/2026/05/DJI_0800-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0852-scaled-rqe5kbw50or6bmqmb42rlazbnbn6ikpk6wepaz5pz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0848-scaled-rqe5j3pq3h2p5yish2zau44nq7oxgsu6ctqvqyz83o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled-rqe5fw3kquofhx6q8706tfayntis6136wxi5pxqnd0.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/PLANO-C-AMAPOLAS-39.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_3005.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_3004.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_3003.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_2998.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_2997.jpg"
+      ]
+    },
+    "mediterranean-views-endless-charm": {
+      "reference": "1520",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/2026/05/DJI_0813-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/DJI_0808-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/DJI_0806-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/DJI_0803-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0852-scaled-rqe5kbw50or6bmqmb42rlazbnbn6ikpk6wepaz5pz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0848-scaled-rqe5j3pq3h2p5yish2zau44nq7oxgsu6ctqvqyz83o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled-rqe5fw3kquofhx6q8706tfayntis6136wxi5pxqnd0.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/Plano-C-PELICANOS-26.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_3094_hdr.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_3091_hdr.jpg"
+      ]
+    },
+    "panoramic-view-retreat": {
+      "reference": "1522",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/2026/05/DJI_0786-2-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/323368_floor2-2-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/323368_floor1-2-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0852-scaled-rqe5kbw50or6bmqmb42rlazbnbn6ikpk6wepaz5pz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0848-scaled-rqe5j3pq3h2p5yish2zau44nq7oxgsu6ctqvqyz83o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled-rqe5fw3kquofhx6q8706tfayntis6136wxi5pxqnd0.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_2203-2.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_2199_hdr-2.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_2196_hdr-2.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/05/IMG_2187_hdr-2.jpg"
+      ]
+    },
+    "mountain-view-oasis": {
+      "reference": "1515",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/2026/04/DJI_0764-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0852-scaled-rqe5kbw50or6bmqmb42rlazbnbn6ikpk6wepaz5pz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0848-scaled-rqe5j3pq3h2p5yish2zau44nq7oxgsu6ctqvqyz83o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled-rqe5fw3kquofhx6q8706tfayntis6136wxi5pxqnd0.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/PHOTO-2026-04-30-11-39-49.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_2119.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_2116_hdr.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_2115.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_2110_hdr.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_2107_hdr.jpg"
+      ]
+    },
+    "elegant-mediterranean-villa": {
+      "reference": "1512",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/2026/04/DJI_0762-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/DJI_0758-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0852-scaled-rqe5kbw50or6bmqmb42rlazbnbn6ikpk6wepaz5pz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0848-scaled-rqe5j3pq3h2p5yish2zau44nq7oxgsu6ctqvqyz83o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled-rqe5fw3kquofhx6q8706tfayntis6136wxi5pxqnd0.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_1203.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_1202.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_1200.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_1199.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_1198.jpg"
+      ]
+    },
+    "charming-mediterranean-retreat-with-stunning-sea-mountain-views": {
+      "reference": "1509",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/2026/04/plano-AV-MONTE-PEGO-BENIMELI-10-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/dron-7-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/dron-6-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/DRON-5-scaled.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0852-scaled-rqe5kbw50or6bmqmb42rlazbnbn6ikpk6wepaz5pz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0848-scaled-rqe5j3pq3h2p5yish2zau44nq7oxgsu6ctqvqyz83o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/260622-C.-LOS-OLIVOS-7-03780-PEGO-scaled-rqe5fw3kquofhx6q8706tfayntis6136wxi5pxqnd0.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/dron.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/dron-10.jpg",
+        "https://montepegolife.com/wp-content/uploads/2026/04/IMG_9999.jpg"
+      ]
+    },
+    "bright-villa-with-private-pool-and-sunny-flat-plot": {
+      "reference": "1452",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/dji_fly_20250207_120054_363_1738928600369_photo_optimized-scaled-riy4fc8s0wslt9ku8gf4a5r1nz6jzswb212j9wmfus.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/dji_fly_20250207_115918_359_1738928604992_photo_optimized-scaled-riy4f5nwp2jljzueavkqapetia2zhx66p4i4wyw72c.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/dji_fly_20250207_115128_342_1738928704997_photo_optimized-scaled-riy4ez31d8alaq3ydaqcb92lckzf01g2c7xqk15y9w.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/dji_fly_20250207_114846_336_1738928709582_photo_optimized-scaled-riy4etg0882vd2c5a8akwahts9r7putobg0todebb8.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_5741-riy4gsvqnmsnvfgdp3685sguxjz3yup9x9lq5ege6c.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_5736-riy4gjhcrafsnbu17z3yguu8zp9ftvnyjz2vcmubwk.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_5731-riy4gdubma82po284wo71w9hfe18jp1kj75ygz2oxw.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_5724-riy4g954o41n3m91wcn27fg6ggoeh7iwujwj2l9nt0.jpeg"
+      ]
+    },
+    "stylish-renovated-apartment-with-sea-mountain-views": {
+      "reference": "1503",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-02-03-at-11.19.58-rim1b0k8xfijtcvtvyrifhwqdkn65vm52tlafg9ubo.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-02-03-at-11.19.58-5-rim1ayokjrfz64yk6xy9aidt6swfqheoekabgwcmo4.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-02-03-at-11.19.58-4-rim1awsw63deix1ahx505iuw015pb377qazcicff0k.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-02-03-at-11.19.58-3-rim1aux7sfatvp40swbr0jbyt9eyvozr21odjsi7d0.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-02-03-at-11.19.58-2-rim1at1jer898h6r3vihvjt1mho8gasadsdel8kzpg.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-02-03-at-11.19.57-rim1apa6nf33y1c7ptvzlkr78y6rlidd19rgo4qkec.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-02-03-at-11.19.57-5-rim1alitw2xynlhobs9hblpcvepaqpyfor5ir0w538.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/WhatsApp-Image-2026-02-03-at-11.19.57-4-rim1ajn5ieve0dkemrg86m6fomykbbqz0hujsgyxfo.jpeg"
+      ]
+    },
+    "spacious-villa-with-sea-mountain-views-pool-and-gardens": {
+      "reference": "1331",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0662-1-scaled-rid2xfzggad21omh9w5z4mfgvh11djat4kqadtyx8k.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_6763_hdr-1-rid309i0ye80vkj0t41olwt9134oguhtij6q7psekk.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_6762-1-rid305qo722vl4ohf2f6bxrenjn7m22w60ksalxz9g.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_6759_hdr-1-rid301zbfpxqaoty10so1ypka05qr9nythyudi3jyc.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_6756_hdr-1-rid2zy7yodsl08zemz65rznpwgo9wh91gzcwge94n8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_6755-1-rid2ztirq7m5e768ef50xiuexjbftzqdsc3h20g3ic.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_6748_hdr-1-rid2zm027jbutbh5mbw0dkqq6gci4ewj3avl7sr8w4.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_6745_hdr-1-rid2zj6jn17zuhl92so4o3gceaqehblc2wx4ryvfes.jpg"
+      ]
+    },
+    "luxurious-apartment-with-panoramic-views": {
+      "reference": "1488",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_8448-scaled-rfnp5ux0vnoy6u6lxgxp0615x45h1yxo70yx9p7q9w.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_8445-scaled-rfnp5r5o4bjswec2jfb6q6zbjko076iquiczcldays.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_8443-scaled-rfnp5nebczenlyhj5doog7xh616jce3thzr1fhivno.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_8441-scaled-rfnp5jmyln9ibimzrc2668vmshp2hlow5h53idogck.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_8429-scaled-rfnp5dzxgn1sduv6o9meraav86gv7f2i4p86mpwtdw.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_8426-scaled-rfnp58cwbmu2g73dl76ncbq3nv8nx8g43xb9r256f8.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_8423-scaled-rfnp54ljkaox5r8u75k52co9abr72g16repbtyar44.jpeg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_8422-scaled-rfnp50u6syjrvbeat3xmsdmews9q7nm9ew3dwugbt0.jpeg"
+      ]
+    },
+    "charming-renovated-villa-with-mountain-views": {
+      "reference": "1501",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0622-copia-scaled-rfno3h69t75g41xo1vo46upkopbwqwk8x1z5sy4gck.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0618-copia-scaled-rfno37rvwuskvybbkrluhx2yqum8lxixjrgb06ie2s.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/15CalleAzuzenas_floorplan_5185cmctxhb38isuw599cp0cc-scaled-rfno5o4pra5j7aqz8tss0asal2iqph9p7wry46vdtw.png",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_4010-HDR-copia-rfno5ihom9xt9mz65rd0lc7j0rajfanb74v18j3qv8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_4009-copia-rfno5gm08lv8mf1wgqjrgcoltzjszwfuivk29z6j7o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_4008-copia-rfno5dsho3rdnl5zx7bvqve81txpct4nihllu5apqc.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_4007-copia-rfno5ayz3lniora3do401e3u9oblpptgi3n5ebew90.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_4006-copia-rfno593apxky1jctonaqwekx2wkvablztuc6frholg.jpg"
+      ]
+    },
+    "spectacular-villa-with-pool-gardens-and-panoramic-sea-mountain-views-in-monte-pego": {
+      "reference": "1498",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/dron-5-scaled-reumkzxzqgwtevxbbxul2aihgqln0pet3vrh0b2k78.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/dron-10-scaled-reumlznuy69po2hfjdaep1i01dpl57clwsjx8tllms.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/dron-2-reumk15ypll7hbbtz0te01afhhd23wkqn3mi92i4lg.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/dron-1-reumjwgrrferv9inqgs95kh4ik081f22ygd2uop3gk.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1113-HDR-copia-reumswr399qp4qfm4uyjjsn5ghluszth71flf5c9tw.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1112-copia-reumsq67xfhovgp67a45kcaxasiab43cu4v727m11g.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1090-copia-reumsgru134tnd2tq61vveobcxsm6521gucc9fzyro.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1087-HDR-copia-reumsb4sw2x3ppb0n3m4gg3jsmkevyfng2ffds8bt0.jpg"
+      ]
+    },
+    "traditional-two-storey-villa-with-sea-mountain-views-and-great-potential-in-monte-pego": {
+      "reference": "1482",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0733-scaled-rmfavrzr82rrg3wtqtielvajsi5b39ffm1ixd6yymc.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0727-scaled-rmfau7lfu0mk3i6qw54sg9iw5dva9f7jeadsklakzo.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0511-rmfay2pjxhwztskobt9kpaf42etlwmjt9exnljkbes.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0508_hdr-rmfay0tvjtuf6knemsgbkaw6vn2vh8ccl5momzn3r8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0502_hdr-rmfaxy0czbqk7qri398futlt3hgru515kro875ra9w.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0501-rmfaxv6uetmp8wvljq0k5cbfbbuo71pykdprrbvgsk.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0498_hdr-rmfaxsdbubiua2zp06sofv11j68kjyerjzrbbhznb8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0497-rmfaxpjt9tezb93sgnksqdqnr0mgwv3kjlsuvo3ttw.jpg"
+      ]
+    },
+    "spacious-villa-with-guest-apartment-pool-and-sea-mountain-views-in-monte-pego": {
+      "reference": "1486",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/Merge111CManueldeFalla_PLANTA3_fxbmk6uuzzz59x9ai5b1fhxtc-scaled-rfnoj8wsh4qmwj0zyp2s0vfzhfllw364f40fo2qnyc.png",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0608-copia-scaled-rfnok063zbry97xejiuyj6kcplv93b6c6uxil3m8xw.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/15CalleAzuzenas_floorplan_5185cmctxhb38isuw599cp0cc-scaled-rfno5o4pra5j7aqz8tss0asal2iqph9p7wry46vdtw.png",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/Merge111CManueldeFalla_PLANTA1_fxbmk6uuzzz59x9ai5b1fhxtc-rfnoj639wmmrxp53f5uwbe5lp9zi8zuxeq1z88uuh0.png",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3934-copia-rfnolyo07wggfz303vbz86rx9i7s4ly7gjuxkuppz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3931-HDR-copia-rfnolwsbu8dvsr5qeuiq37902qh1p7qqsajymasibo.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3929-copia-rfnoluwngkbb5j8gptpgy7q2vyqb9tja418znqvao4.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3925-HDR-copia-rfnolt0z2w8qibb70sw7t875p6zkufbtfry0p6y30k.jpg"
+      ]
+    },
+    "cozy-two-level-home-with-mountain-views-and-terrace-in-monte-pego": {
+      "reference": "1490",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1166-scaled-reul9cij9toiuj52kucg5te9cjgrt38o816c6bq1ms.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1164-scaled-reul8zcsm56ibzo6pono6wpt159mtbsfi81jgg9k1w.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1163-scaled-reul8n4w5aps525xp1dishstb4xv19fx4jk87uroas.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1157-scaled-reul70uwdki058il5c6nhwi8h8x3s10k8j44gp630k.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1155-scaled-reul6np5pvzzmp1pa6hvizts5upys9kbipzbqtplfo.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1154-scaled-reul6cf3fvkjrdi341mcp2o9189k7wbjh65hzi6bic.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1151-scaled-reul5xdoeizylm3xjv4bl6gvj2bosqnu33pqb2sm9w.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1150-scaled-reul5l5rxoj8eoloj7u66rjvt1zx0obbpf8f2haqis.jpg"
+      ]
+    },
+    "stylish-two-level-villa-with-guest-apartment-and-stunning-sea-mountain-views-in-monte-pego": {
+      "reference": "1499",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0544-copia-scaled-rgdq5uwbhu99hmklqt9diijfrxf4pdmuwx8438fxz8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/Sin-titulo-9-copia-1-rgdq82slmramwhcjs9snwgdm9ohbvng1jwodvr5hac.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/Sin-titulo-8-copia-1-rgdq7zz3296rxngn8qks6z38hiv88k4ujipxfx9nt0.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/Sin-titulo-6-copia-1-rgdq7te7qexrodq7b5qe7ir0btrnqoeq6m5j2zjf0k.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/Sin-titulo-4-copia-1-rgdq7mtcekorf3zrdkw082es64o38soltpl4q1t684.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/Sin-titulo-3-copia-1-rgdq7jztu2kwga3uu1o4il4edz1zlpdetbmoa7xcqs.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/Sin-titulo-20-copia-1-rgdq8vxlimeiwe6824e3jr0womhpi9npzwwfrby9xg.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/Sin-titulo-2-copia-1-rgdq7h6b9kh1hg7yaig8t3u0ltfvym27sxo7ue1j9g.jpg"
+      ]
+    },
+    "charming-mediterranean-retreat-with-sea-lush-mountain-views-in-monte-pego": {
+      "reference": "1494",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/aerea-9-scaled-reujjdziryv3jv51dk6ray9fp6urfc9mpd34cpl9s4.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/aerea-8-scaled-reujj0ts4ad31bo5iehzc1kzdsnmfktdzjybmu4s78.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/aerea-7-scaled-reujiolvnfwcue5whr7txmnznsbunigvlvh0e8mwg4.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/aerea-4-1-scaled-reuji6qy1l7wpsvue1hx4968dgrvl9hz7f2s9zddqc.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/aerea-3-reujhz88iwxm4x6rly8wkb2jmdsxvoo4iduwfroj44.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/aerea-10-reujjmg2hh6ogcsr05uefe4l1np2cm77qiyho78q84.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1781-copia-reujo9rc9zjpuy1pv65zr7wms8seeqnfpj2x3gcngk.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_1777-HDR-copia-reujo44b4zbzxa9ws3q8c9bv7xk74k11or607sl0hw.jpg"
+      ]
+    },
+    "exclusive-modern-residence-with-panoramic-coastline-mountain-views": {
+      "reference": "1496",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0585-copia-scaled-rfkyczqzeqm134q9izucsqaepbhnycfai6bz9n0jic.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0575-copia-scaled-rfkybtg8v704kofpdzk56iynyza5byrdccz4o6r9ac.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3608-HDR-copia-rfkyexb1gh98y9x88twqx8qintytry3ffqlws45epw.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3605-HDR-copia-rfkyevfd2t6ob1zyjt3hs97lh283cjvyrhaxtk872c.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3602-HDR-copia-rfkyesluib2tc84209vm2rx7owlzpgkrr3chdqcdl0.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3599-HDR-copia-rfkyeqq64n08p06sb92cxseai4v9a2db2u1if6f5xg.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3596-HDR-copia-rfkyeouhqyxo1s9im893ssvdbd4iuo5uekqjgmhy9w.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3593-HDR-copia-rfkyemytdav3ekc8x7funtcg4ldsf9ydqbfki2kqmc.jpg"
+      ]
+    },
+    "25624": {
+      "reference": "1484",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/aerea-4-scaled-reui6jbhkxzm5g3lmxzs7s2099n0dnbubkhng00v5w.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0575-HDR-copia-reuiamw5dxlms858p7s7l8tdirfmy4lp7uwvsfy210.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0572-HDR-copia-reuiah948xdwukdfm5cg6a8lyg7fnxzb72zyws6f2c.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0569-copia-reuiaao8x34wlamzoki26twdsr3v6296u6fkjug69w.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0567-copia-reuia517s2x6nmv6li2arvbm8fvnvvmsteino6ojb8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0566-copia-reui9ze6n2pgpz3difmjcwquo4nglp0esmlqsiwwck.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0565-copia-reui9stbb8gggpcxkus5dgemifjw3taafq1cfl6nk4.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_0564-copia-reui9o44d2a0unjrcar0izlbji721brmr2rx17dmf8.jpg"
+      ]
+    },
+    "ref-1253": {
+      "reference": "1253",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDfe385f01-0000-0500-0000-0000103f0c3b-4-scaled-1-r2gujgo3o2qbuab51o4h8tt0bry0q87ac69hryeu2s.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDfe385f01-0000-0500-0000-0000103f0c3a-4-scaled-1-r2gujgo3o2qbuab51o4h8tt0bry0q87ac69hryeu2s.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDfe385f01-0000-0500-0000-0000103f0c39-4-scaled-1-r2gujesfaenr72dvcnb83ua3507aatztnwyitehmf8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDfe385f01-0000-0500-0000-0000103f0c38-4-scaled-1-r2gujcwqwql6juglnmhyyur5y8gjvfscznnjuukero.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDfe385f01-0000-0500-0000-0000103f0c37-4-scaled-1-r2gujb12j2ilwmjbyloptv88rgptg1kwbeckwan744.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDfe385f01-0000-0500-0000-0000103f0c36-4-scaled-1-r2gujb12j2ilwmjbyloptv88rgptg1kwbeckwan744.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDfe385f01-0000-0500-0000-0000103f0c35-4-scaled-1-r2guj95e5eg19em29kvgovpbkoz30ndfn51lxqpzgk.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDfe385f01-0000-0500-0000-0000103f0c34-4-scaled-1-r2guj79prqdgm6oskk27jw6edx8cl95yyvqmz6srt0.jpg"
+      ]
+    },
+    "ref-1322": {
+      "reference": "1322",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/DJI_0563-copia-scaled-rgby7x38f52qs49mgabvpwg3qhdv683grdraxbju10.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3525-copia-rgbybr9ibsbw6sox1g21efkv24gtlqc0adnogzuymc.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3524-copia-rgbybni5kg6qwcudnefj4gj0okzcqxx2xv1qjw0jb8.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3523-copia-rgbybjqst41llwzu9ct0uhh6b1hvw5i5lcfsms6404.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3522-copia-rgbybhv4ffz0yp2kkbzrphy949r5graox34to88wck.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3517-copia-rgbybd5xh9slcn9ebrymv14y5cebe9s18fve9ufv7o.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3516-copia-rgbyb9ekpxng27euxqc4l233rswujhd3vx9gcqlfwk.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IMG_3515-copia-rgbyb6l25fjl3diye748vkspznaqwe1wvjazwwpmf8.jpg"
+      ]
+    },
+    "apa_187": {
+      "reference": "1456",
+      "images": [
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDaf978e01-0000-0500-0000-000014aa1e25-5-scaled-1-r2gup9c9tanzfpw176bnmd5c7bdi717p4v3abdtfpg.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDaf978e01-0000-0500-0000-000014aa1e15-5-scaled-1-r2gup7glfmleshyri5iehdmf0jmrrn08glsbctw81w.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDaf978e01-0000-0500-0000-000014aa1e12-5-scaled-1-r2gup5kx1yiu5a1ht4p5ce3htrw1c8srschce9z0ec.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDaf978e01-0000-0500-0000-000014aa1e0f-5-scaled-1-r2gup3p8oag9i24843vw7ekkn05awulb436dfq1sqs.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDaf978e01-0000-0500-0000-000014aa1e2d-5-r2gupd3mkmt4q5qkl7y5wc76kuuz1tmmhdp88hnv0k.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDaf978e01-0000-0500-0000-000014aa1e1d-5-r2gup9c9tanzfpw176bnmd5c7bdi717p4v3abdtfpg.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDaf978e01-0000-0500-0000-000014aa1e18-5-r2gup9c9tanzfpw176bnmd5c7bdi717p4v3abdtfpg.jpg",
+        "https://montepegolife.com/wp-content/uploads/elementor/thumbs/IDaf978e01-0000-0500-0000-000014aa1e0d-5-r2gup3p8oag9i24843vw7ekkn05awulb436dfq1sqs.jpg"
+      ]
+    }
+  }
+}

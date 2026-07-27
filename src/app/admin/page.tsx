@@ -1,130 +1,186 @@
+import type { ComponentType } from "react";
 import Link from "next/link";
-import { getLatestSyncLog } from "@/lib/crm/sync";
-import { listAdminProperties } from "@/lib/db/queries/admin-properties";
-import { listLeads } from "@/lib/db/queries/leads";
-import { listValuations } from "@/lib/db/queries/valuations";
+import {
+  ArrowUpRight,
+  Building2,
+  CameraOff,
+  Languages,
+  RefreshCw,
+  TrendingUp,
+  Users,
+} from "lucide-react";
+import { ActivityFeed } from "@/components/admin/activity-feed";
+import {
+  AdminCard,
+  AdminPageHeader,
+  AdminStatPill,
+  adminToneBox,
+} from "@/components/admin/admin-shell";
+import { getAdminDashboardStats } from "@/lib/db/queries/admin-stats";
 import { syncNowAction } from "./actions";
+import { cn } from "@/lib/utils";
 
 export default async function AdminDashboardPage() {
-  const [sync, properties, leads, valuations] = await Promise.all([
-    getLatestSyncLog(),
-    listAdminProperties(),
-    listLeads(),
-    listValuations(),
-  ]);
-
-  const withoutPhotos = properties.filter((p) => !p.hasPhotos).length;
-  const pendingTranslations = properties.reduce(
-    (acc, p) => acc + p.pendingTranslations,
-    0,
-  );
-  const newLeads = leads.filter((l) => l.status === "new").length;
-  const syncFailed =
-    sync?.status === "failed" ||
-    ((sync?.warnings?.length ?? 0) > 0 && !sync?.warningsReviewed);
+  const stats = await getAdminDashboardStats();
 
   return (
-    <div className="space-y-8">
-      <div>
-        <h1 className="font-display text-3xl">Inicio</h1>
-        <p className="mt-2 text-muted-foreground">
-          Resumen operativo y estado de la sincronización.
-        </p>
-      </div>
-
-      {syncFailed ? (
-        <div
-          className="border border-destructive bg-destructive/10 px-4 py-3 text-sm text-destructive"
-          role="alert"
-        >
-          La última sincronización tiene avisos o ha fallado. Revisa el detalle
-          antes de publicar.
-          {sync?.error ? ` Error: ${sync.error}` : null}
-          {sync?.warnings?.length
-            ? ` Avisos: ${sync.warnings.slice(0, 3).join(" · ")}`
-            : null}
-        </div>
-      ) : null}
+    <div className="mx-auto max-w-5xl space-y-8">
+      <AdminPageHeader
+        title="Inicio"
+        description="Lo que necesitas hoy: clientes, viviendas y avisos."
+        actions={
+          <form action={syncNowAction}>
+            <button
+              type="submit"
+              className="inline-flex items-center gap-2 rounded-full bg-sea-deep px-5 py-2.5 text-sm font-medium text-white shadow-[0_10px_28px_rgba(44,85,138,0.28)] hover:bg-[#244872]"
+            >
+              <RefreshCw className="h-4 w-4" aria-hidden />
+              Importar del CRM
+            </button>
+          </form>
+        }
+      />
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Stat label="Leads nuevos" value={newLeads} href="/admin/leads" />
-        <Stat
-          label="Sin traducir"
-          value={pendingTranslations}
-          href="/admin/translations"
+        <DashStat
+          label="Leads sin revisar"
+          value={stats.leads.new}
+          href="/admin/leads"
+          icon={Users}
+          tone="sea"
         />
-        <Stat
-          label="Sin fotos"
-          value={withoutPhotos}
-          href="/admin/properties"
-        />
-        <Stat
-          label="Valoraciones"
-          value={valuations.filter((v) => v.status === "pending").length}
+        <DashStat
+          label="Valoraciones pendientes"
+          value={stats.valuations.pending}
           href="/admin/valuations"
+          icon={TrendingUp}
+          tone="gold"
+        />
+        <DashStat
+          label="Sin traducir"
+          value={stats.properties.pendingTranslations}
+          href="/admin/translations"
+          icon={Languages}
+          tone="cream"
+        />
+        <DashStat
+          label="Sin fotos"
+          value={stats.properties.withoutPhotos}
+          href="/admin/properties?issue=no-photos"
+          icon={CameraOff}
+          tone="warning"
         />
       </div>
 
-      <section className="border border-border bg-card p-5">
-        <h2 className="font-display text-xl">Sincronización</h2>
-        {sync ? (
-          <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
-            <div>
-              <dt className="text-muted-foreground">Estado</dt>
-              <dd className="font-medium">{sync.status}</dd>
-            </div>
-            <div>
-              <dt className="text-muted-foreground">Última</dt>
-              <dd className="tabular">
-                {sync.startedAt.toLocaleString("es-ES")}
-              </dd>
-            </div>
-            <div>
-              <dt className="text-muted-foreground">Creadas / actualizadas</dt>
-              <dd className="tabular">
-                {sync.propertiesCreated} / {sync.propertiesUpdated}
-              </dd>
-            </div>
-            <div>
-              <dt className="text-muted-foreground">Avisos</dt>
-              <dd className="tabular">{sync.warnings?.length ?? 0}</dd>
-            </div>
-          </dl>
-        ) : (
-          <p className="mt-3 text-sm text-muted-foreground">
-            Aún no hay sincronizaciones registradas. El adaptador mock está
-            activo por defecto.
-          </p>
-        )}
-        <form action={syncNowAction} className="mt-4">
-          <button
-            type="submit"
-            className="rounded-[var(--radius)] bg-primary px-4 py-2 text-sm text-primary-foreground"
-          >
-            Sincronizar ahora
-          </button>
-        </form>
+      <section>
+        <h2 className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+          Esta semana
+        </h2>
+        <div className="grid gap-3 sm:grid-cols-3">
+          <AdminStatPill
+            label="Leads nuevos"
+            value={stats.leads.new}
+            tone="sea"
+          />
+          <AdminStatPill
+            label="Contactos esta semana"
+            value={stats.leads.thisWeek}
+            tone="gold"
+          />
+          <AdminStatPill
+            label="Valoraciones recibidas"
+            value={stats.valuations.thisWeek}
+            tone="cream"
+          />
+        </div>
       </section>
+
+      <div className="grid gap-4 lg:grid-cols-[1.3fr_1fr]">
+        <AdminCard>
+          <div className="flex items-center justify-between">
+            <h2 className="font-display text-xl">Cartera</h2>
+            <Link href="/admin/properties" className="text-sm text-sea-deep">
+              Ver todas →
+            </Link>
+          </div>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <AdminStatPill
+              label="En venta"
+              value={stats.properties.published}
+              tone="success"
+            />
+            <AdminStatPill label="Destacadas" value={stats.properties.featured} tone="gold" />
+            <AdminStatPill label="Vendidas" value={stats.properties.sold} tone="sea" />
+            <AdminStatPill
+              label="Sin publicar"
+              value={stats.properties.draft}
+              tone="warning"
+            />
+          </div>
+          <Link
+            href="/admin/properties"
+            className={cn(
+              "mt-4 flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm hover:opacity-90",
+              adminToneBox("sea"),
+            )}
+          >
+            <Building2 className="h-4 w-4 text-sea-deep" />
+            Gestionar propiedades
+          </Link>
+        </AdminCard>
+
+        <ActivityFeed items={stats.activity} />
+      </div>
     </div>
   );
 }
 
-function Stat({
+function DashStat({
   label,
   value,
   href,
+  icon: Icon,
+  tone = "sea",
 }: {
   label: string;
   value: number;
   href: string;
+  icon: ComponentType<{ className?: string }>;
+  tone?: "sea" | "gold" | "cream" | "warning";
 }) {
+  const bg = {
+    sea: "bg-[#dce8f5] ring-sea-deep/15 hover:bg-[#d0e0f0]",
+    gold: "bg-[#f5ead8] ring-sun-clay/20 hover:bg-[#efe0c8]",
+    cream: "bg-limestone ring-sun-clay/15 hover:bg-[#ebe3d4]",
+    warning: "bg-[#f5ead8] ring-sun-clay/25 hover:bg-[#efe0c8]",
+  };
+  const iconBg = {
+    sea: "bg-sea-deep/15 text-sea-deep",
+    gold: "bg-sun-clay/20 text-[#8a6828]",
+    cream: "bg-sea-deep/10 text-sea-deep",
+    warning: "bg-sun-clay/25 text-[#8a6828]",
+  };
   return (
     <Link
       href={href}
-      className="border border-border bg-card p-4 hover:border-sea-deep"
+      className={cn(
+        "group rounded-[1.5rem] p-5 shadow-[0_10px_28px_rgba(26,34,44,0.06)] ring-1 transition hover:-translate-y-0.5",
+        bg[tone],
+      )}
     >
-      <p className="text-sm text-muted-foreground">{label}</p>
-      <p className="mt-2 tabular text-3xl text-sea-deep">{value}</p>
+      <div className="flex items-start justify-between">
+        <span
+          className={cn(
+            "flex h-10 w-10 items-center justify-center rounded-2xl",
+            iconBg[tone],
+          )}
+        >
+          <Icon className="h-4 w-4" />
+        </span>
+        <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100" />
+      </div>
+      <p className="mt-4 text-sm font-medium text-ink/70">{label}</p>
+      <p className="mt-1 tabular text-3xl font-semibold">{value}</p>
     </Link>
   );
 }

@@ -1,28 +1,13 @@
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/config/site";
-import { SimplePage } from "@/components/layout/simple-page";
+import { PageHero } from "@/components/layout/page-hero";
+import { montePegoMedia } from "@/lib/media/site";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 type Props = { params: Promise<{ locale: string }> };
 
-const faqs = [
-  {
-    q: "What is the climate like in Monte Pego?",
-    a: "Monte Pego enjoys a mild Mediterranean climate, with warm summers and gentle winters, between the Segària mountains and the Pego marshlands.",
-  },
-  {
-    q: "How do I get to Monte Pego?",
-    a: "Alicante and Valencia airports are the usual gateways. From there it is about an hour by car to the residencial, inland from Denia and Oliva.",
-  },
-  {
-    q: "What services are available inside the residencial?",
-    a: "Residents have a service centre, parcel reception, 24h security and Gastrobar La Cova, in addition to the estate agency.",
-  },
-  {
-    q: "Is Monte Pego suitable as a second home?",
-    a: "Yes. Many owners are from northern Europe and use their villa for longer stays in spring and autumn as well as summer.",
-  },
-];
+const faqKeys = ["climate", "access", "services", "secondHome"] as const;
 
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
@@ -41,15 +26,40 @@ export default async function MontePegoPage({ params }: Props) {
   const t = await getTranslations("MontePego");
 
   return (
-    <SimplePage locale={locale} title={t("title")} intro={t("intro")}>
-      <div className="space-y-6">
-        {faqs.map((item) => (
-          <section key={item.q}>
-            <h2 className="font-display text-2xl text-ink">{item.q}</h2>
-            <p className="mt-2 text-muted-foreground">{item.a}</p>
-          </section>
-        ))}
+    <>
+      <PageHero
+        title={t("title")}
+        intro={t("intro")}
+        image={montePegoMedia.residential[0] ?? montePegoMedia.hero}
+        eyebrow="Costa Blanca"
+      />
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-16 lg:grid-cols-[1fr_1fr]">
+        <div className="space-y-4 text-base leading-relaxed">
+          <p>{t("body1")}</p>
+          <p className="text-muted-foreground">{t("body2")}</p>
+        </div>
+        <div className="relative min-h-[280px] overflow-hidden">
+          <Image
+            src={montePegoMedia.residential[1] ?? montePegoMedia.hero}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+        </div>
       </div>
-    </SimplePage>
+      <section className="section-band">
+        <div className="mx-auto max-w-3xl space-y-8 px-4 py-16">
+          {faqKeys.map((key) => (
+            <article key={key}>
+              <h2 className="font-display text-2xl text-ink">
+                {t(`${key}Q`)}
+              </h2>
+              <p className="mt-2 text-muted-foreground">{t(`${key}A`)}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

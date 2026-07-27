@@ -29,3 +29,9 @@ export const PENDING_PORTAL_FEEDS = {
   fotocasaEnabled: false,
   kyeroEnabled: true,
 };
+
+
+/** Citas de la home: ilustrativas hasta confirmar reseñas reales (Google etc.). */
+export const PENDING_TESTIMONIALS = {
+  status: "placeholder" as const, // TODO(cliente): sustituir por reseñas verificadas
+};

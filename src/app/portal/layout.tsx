@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ChatWidget } from "@/components/ai/chat-widget";
 
 export const metadata: Metadata = {
   title: "Portal — MontePego Life",
@@ -27,6 +28,7 @@ export default function PortalLayout({
         </div>
       </header>
       <div className="mx-auto max-w-4xl px-6 py-8">{children}</div>
+      <ChatWidget context="portal" />
     </div>
   );
 }

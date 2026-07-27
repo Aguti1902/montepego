@@ -24,7 +24,7 @@ export function ElevationStrip({
   return (
     <div
       className={cn(
-        "flex items-center gap-3 border-t border-rosemary/40 pt-2 text-xs tracking-wide text-rosemary",
+        "flex items-center gap-3 border-t border-rosemary/20 pt-3 text-xs tracking-wide text-rosemary",
         className,
       )}
     >

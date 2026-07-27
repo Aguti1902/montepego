@@ -12,13 +12,13 @@ function toRaw(seed: (typeof seedProperties)[number]): RawCrmProperty {
       : {
           builtArea: seed.builtArea,
           plotArea: seed.plotArea,
-          photos: [
-            {
-              url: seed.coverPlaceholder,
-              sortOrder: 0,
-              isCover: true,
-            },
-          ],
+          photos: (seed.images?.length ? seed.images : [seed.coverPlaceholder]).map(
+            (url, index) => ({
+              url,
+              sortOrder: index,
+              isCover: index === 0,
+            }),
+          ),
         };
 
   return {

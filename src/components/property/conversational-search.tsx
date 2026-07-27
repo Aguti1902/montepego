@@ -45,16 +45,17 @@ export function ConversationalSearch() {
   }
 
   return (
-    <div className="space-y-4 border border-border bg-card p-4">
+    <div className="space-y-4">
       <form onSubmit={onSubmit} className="flex flex-col gap-3 sm:flex-row">
         <Input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Villa with pool under 500.000…"
+          placeholder="Villa with pool under €500,000…"
           aria-label="Conversational search"
+          className="h-12"
         />
         <Button type="submit" disabled={pending || query.trim().length < 2}>
-          Search
+          {pending ? "…" : "Ask AI"}
         </Button>
       </form>
       {message ? (

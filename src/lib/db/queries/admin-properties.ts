@@ -5,6 +5,7 @@ import {
   propertyOverrides,
   propertyTranslations,
 } from "@/lib/db/schema";
+import { demoAdminMeta } from "@/lib/db/admin-demo-data";
 import { seedProperties } from "@/lib/db/seed-data";
 import { seedToResolved } from "@/lib/db/mappers";
 import type { ResolvedProperty } from "@/lib/db/types";
@@ -33,6 +34,7 @@ export async function listAdminProperties(): Promise<AdminPropertyRow[]> {
   if (!hasDatabase()) {
     return seedProperties.map((seed) => {
       const resolved = seedToResolved(seed, "en");
+      const meta = demoAdminMeta[resolved.reference];
       return {
         id: resolved.id,
         reference: resolved.reference,
@@ -44,9 +46,9 @@ export async function listAdminProperties(): Promise<AdminPropertyRow[]> {
         plotArea: resolved.plotArea,
         isFeatured: resolved.isFeatured,
         title: resolved.title,
-        pendingTranslations: 0,
-        overrideCount: 0,
-        hasPhotos: Boolean(resolved.coverUrl),
+        pendingTranslations: meta?.pendingTranslations ?? 0,
+        overrideCount: meta?.overrideCount ?? 0,
+        hasPhotos: meta?.hasPhotos ?? Boolean(resolved.coverUrl),
       };
     });
   }
@@ -102,15 +104,38 @@ export async function getAdminProperty(id: string): Promise<{
     const seed = seedProperties.find((p) => p.reference === ref || p.slug === id);
     if (!seed) return { property: null, overrides: [], translations: [] };
     const property = seedToResolved(seed, "es");
+    const meta = demoAdminMeta[seed.reference];
+    const pending = meta?.pendingTranslations ?? 0;
+    const locales = Object.keys(seed.titles);
     return {
       property,
-      overrides: [],
-      translations: Object.entries(seed.titles).map(([locale, title]) => ({
+      overrides:
+        (meta?.overrideCount ?? 0) > 0
+          ? [
+              {
+                id: `demo-ov-${seed.reference}-price`,
+                field: "price",
+                value: seed.price,
+                reason: "Ajuste comercial demo (manual sobre CRM)",
+              },
+              ...(meta!.overrideCount > 1
+                ? [
+                    {
+                      id: `demo-ov-${seed.reference}-feat`,
+                      field: "isFeatured",
+                      value: true,
+                      reason: "Destacada en home (demo)",
+                    },
+                  ]
+                : []),
+            ]
+          : [],
+      translations: locales.map((locale, index) => ({
         locale,
-        title,
+        title: seed.titles[locale] ?? seed.titles.en,
         description: seed.descriptions[locale] ?? seed.descriptions.en,
-        reviewed: true,
-        source: "manual",
+        reviewed: index >= pending,
+        source: index < pending ? "ai_translated" : "manual",
       })),
     };
   }

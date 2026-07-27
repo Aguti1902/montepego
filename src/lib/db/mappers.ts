@@ -2,6 +2,10 @@ import type { FeatureSlug } from "@/config/site";
 import type { SeedProperty } from "./seed-data";
 import type { ResolvedMedia, ResolvedProperty } from "./types";
 import { applyOverrides, type OverrideRecord } from "./apply-overrides";
+import {
+  buildSeedDescription,
+  derivePropertyExtras,
+} from "@/lib/property/enrich";
 
 const FEATURE_SET = new Set<string>([
   "pool",
@@ -30,20 +34,35 @@ export function seedToResolved(
   locale: string,
 ): ResolvedProperty {
   const title = seed.titles[locale] ?? seed.titles.en;
-  const description = seed.descriptions[locale] ?? seed.descriptions.en;
-  const media: ResolvedMedia[] = [
-    {
-      id: `seed-media-${seed.reference}`,
-      kind: "photo",
-      storagePath: seed.coverPlaceholder,
-      width: 1600,
-      height: 1067,
-      sortOrder: 0,
-      alt: `${title} — MontePego Life`,
-      isCover: true,
-      aiRoomType: "facade",
-    },
-  ];
+  const description = buildSeedDescription(seed, locale);
+  const extras = derivePropertyExtras(seed);
+  const images =
+    seed.images?.length > 0 ? seed.images : [seed.coverPlaceholder];
+  const media: ResolvedMedia[] = images.map((url, index) => ({
+    id: `seed-media-${seed.reference}-${index}`,
+    kind: "photo" as const,
+    storagePath: url,
+    width: 1600,
+    height: 1067,
+    sortOrder: index,
+    alt: `${title} — MontePego Life`,
+    isCover: index === 0,
+    aiRoomType: index === 0 ? "facade" : null,
+  }));
+
+  if (seed.builtArea != null && images.length > 3) {
+    media.push({
+      id: `seed-media-${seed.reference}-plan`,
+      kind: "floorplan",
+      storagePath: images[Math.min(3, images.length - 1)]!,
+      width: 1200,
+      height: 900,
+      sortOrder: media.length,
+      alt: `${title} — plano`,
+      isCover: false,
+      aiRoomType: "plan",
+    });
+  }
 
   return {
     id: `seed-${seed.reference}`,
@@ -58,9 +77,9 @@ export function seedToResolved(
     bathrooms: seed.bathrooms,
     builtArea: seed.builtArea,
     plotArea: seed.plotArea,
-    terraceArea: null,
-    yearBuilt: null,
-    energyRating: null,
+    terraceArea: extras.terraceArea,
+    yearBuilt: extras.yearBuilt,
+    energyRating: extras.energyRating,
     latitude: seed.latitude,
     longitude: seed.longitude,
     locationPrecision: "approximate",
@@ -81,7 +100,7 @@ export function seedToResolved(
     description,
     seoTitle: title,
     seoDescription: description.slice(0, 155),
-    coverUrl: seed.coverPlaceholder,
+    coverUrl: images[0] ?? null,
     media,
   };
 }

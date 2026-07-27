@@ -229,7 +229,10 @@ export async function runCrmSync(since?: Date): Promise<SyncResult> {
 }
 
 export async function getLatestSyncLog() {
-  if (!process.env.DATABASE_URL) return null;
+  if (!process.env.DATABASE_URL) {
+    const { demoSyncLog } = await import("@/lib/db/admin-demo-data");
+    return demoSyncLog;
+  }
   const db = getDb();
   const [row] = await db
     .select()

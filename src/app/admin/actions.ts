@@ -11,11 +11,22 @@ import {
   markTranslationReviewed,
   upsertTranslation,
 } from "@/lib/db/queries/translations";
-import { updateLeadStatus } from "@/lib/db/queries/leads";
+import { updateLeadStatus, updateLeadNotes } from "@/lib/db/queries/leads";
+import { savePageTranslation } from "@/lib/db/queries/pages";
+import { updateValuationAgent } from "@/lib/db/queries/valuations";
+import { markSyncWarningsReviewed } from "@/lib/db/queries/admin-sync";
 
 export async function syncNowAction() {
   await runCrmSync();
   revalidatePath("/admin");
+  revalidatePath("/admin/settings");
+}
+
+export async function markSyncReviewedAction(id: string) {
+  await markSyncWarningsReviewed(id);
+  revalidatePath("/admin");
+  revalidatePath("/admin/settings");
+  return { ok: true };
 }
 
 export async function updateStatusAction(
@@ -83,4 +94,40 @@ export async function setLeadStatusAction(
 ) {
   await updateLeadStatus(id, status);
   revalidatePath("/admin/leads");
+  revalidatePath("/admin");
+}
+
+export async function savePageContentAction(input: {
+  slug: string;
+  locale: string;
+  title: string;
+  body: string;
+  seoTitle: string;
+  seoDescription: string;
+}) {
+  const result = await savePageTranslation(input);
+  revalidatePath("/admin/content");
+  return result;
+}
+
+export async function saveLeadNotesAction(id: string, notes: string) {
+  await updateLeadNotes(id, notes);
+  revalidatePath("/admin/leads");
+  return { ok: true };
+}
+
+export async function saveValuationAgentAction(input: {
+  id: string;
+  agentEstimate: number | null;
+  agentNotes: string;
+  status: "pending" | "reviewed" | "contacted";
+}) {
+  await updateValuationAgent(input.id, {
+    agentEstimate: input.agentEstimate,
+    agentNotes: input.agentNotes,
+    status: input.status,
+  });
+  revalidatePath("/admin/valuations");
+  revalidatePath("/admin");
+  return { ok: true };
 }

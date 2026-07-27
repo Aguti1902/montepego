@@ -1,4 +1,7 @@
+import { Suspense } from "react";
 import Link from "next/link";
+import { AdminPageHeader, AdminStatPill } from "@/components/admin/admin-shell";
+import { AdminPropertyFilters } from "@/components/admin/property-filters";
 import { listAdminProperties } from "@/lib/db/queries/admin-properties";
 import { formatPrice } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -11,65 +14,120 @@ const statusLabel: Record<string, string> = {
   withdrawn: "Retirada",
 };
 
-export default async function AdminPropertiesPage() {
-  const properties = await listAdminProperties();
+type Props = { searchParams: Promise<Record<string, string | undefined>> };
+
+export default async function AdminPropertiesPage({ searchParams }: Props) {
+  const sp = await searchParams;
+  const all = await listAdminProperties();
+  let properties = all;
+
+  if (sp.q) {
+    const q = sp.q.toLowerCase();
+    properties = properties.filter(
+      (p) =>
+        p.reference.includes(q) ||
+        p.title.toLowerCase().includes(q) ||
+        p.slug.includes(q),
+    );
+  }
+  if (sp.status) {
+    properties = properties.filter((p) => p.status === sp.status);
+  }
+  if (sp.type) {
+    properties = properties.filter((p) => p.type === sp.type);
+  }
+  if (sp.issue === "no-photos") {
+    properties = properties.filter((p) => !p.hasPhotos);
+  }
+  if (sp.issue === "pending-tr") {
+    properties = properties.filter((p) => p.pendingTranslations > 0);
+  }
+  if (sp.issue === "featured") {
+    properties = properties.filter((p) => p.isFeatured);
+  }
+
+  const published = all.filter((p) => p.status === "available").length;
+  const withoutPhotos = all.filter((p) => !p.hasPhotos).length;
+  const pendingTr = all.filter((p) => p.pendingTranslations > 0).length;
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="font-display text-3xl">Propiedades</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Edita fichas, overrides y estado. Los campos manuales ganan sobre el
-          CRM.
-        </p>
+    <div className="mx-auto max-w-6xl space-y-6">
+      <AdminPageHeader
+        title="Propiedades"
+        description={`${all.length} fichas en cartera.`}
+      />
+
+      <div className="grid gap-3 sm:grid-cols-3">
+        <AdminStatPill label="En venta" value={published} tone="success" />
+        <AdminStatPill label="Sin fotos" value={withoutPhotos} tone="warning" />
+        <AdminStatPill label="Sin traducir" value={pendingTr} tone="sea" />
       </div>
-      <div className="overflow-x-auto border border-border bg-card">
-        <table className="w-full min-w-[720px] text-left text-sm">
-          <thead className="border-b border-border bg-muted/50">
-            <tr>
-              <th className="px-3 py-2">Ref.</th>
-              <th className="px-3 py-2">Título</th>
-              <th className="px-3 py-2">Estado</th>
-              <th className="px-3 py-2">Precio</th>
-              <th className="px-3 py-2">m²</th>
-              <th className="px-3 py-2">Overrides</th>
-              <th className="px-3 py-2" />
-            </tr>
-          </thead>
-          <tbody>
-            {properties.map((property) => (
-              <tr key={property.id} className="border-b border-border/70">
-                <td className="px-3 py-2 tabular">{property.reference}</td>
-                <td className="px-3 py-2">
-                  {property.title}
-                  {property.isFeatured ? (
-                    <Badge className="ml-2" variant="accent">
-                      Destacada
-                    </Badge>
-                  ) : null}
-                </td>
-                <td className="px-3 py-2">
-                  {statusLabel[property.status] ?? property.status}
-                </td>
-                <td className="px-3 py-2 tabular">
-                  {formatPrice(property.price, "es")}
-                </td>
-                <td className="px-3 py-2 tabular">
-                  {property.builtArea ?? "—"} / {property.plotArea ?? "—"}
-                </td>
-                <td className="px-3 py-2 tabular">{property.overrideCount}</td>
-                <td className="px-3 py-2 text-right">
-                  <Link
-                    href={`/admin/properties/${property.id}`}
-                    className="text-sea-deep hover:underline"
-                  >
-                    Editar
-                  </Link>
-                </td>
+
+      <Suspense fallback={null}>
+        <AdminPropertyFilters />
+      </Suspense>
+
+      <div className="overflow-hidden rounded-2xl bg-white shadow-[0_12px_36px_rgba(26,34,44,0.05)] ring-1 ring-black/5">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[780px] text-left text-sm">
+            <thead className="border-b border-border/80 bg-[#dce8f5]">
+              <tr>
+                <th className="px-4 py-3 font-medium">Ref.</th>
+                <th className="px-4 py-3 font-medium">Título</th>
+                <th className="px-4 py-3 font-medium">Estado</th>
+                <th className="px-4 py-3 font-medium">Precio</th>
+                <th className="px-4 py-3 font-medium">m²</th>
+                <th className="px-4 py-3 font-medium">Trad.</th>
+                <th className="px-4 py-3 font-medium">Ov.</th>
+                <th className="px-4 py-3" />
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {properties.map((property) => (
+                <tr
+                  key={property.id}
+                  className="border-b border-border/50 last:border-0"
+                >
+                  <td className="px-4 py-3 tabular">{property.reference}</td>
+                  <td className="px-4 py-3">
+                    {property.title}
+                    {property.isFeatured ? (
+                      <Badge className="ml-2 rounded-full" variant="accent">
+                        ★
+                      </Badge>
+                    ) : null}
+                    {!property.hasPhotos ? (
+                      <Badge className="ml-2 rounded-full" variant="sold">
+                        Sin fotos
+                      </Badge>
+                    ) : null}
+                  </td>
+                  <td className="px-4 py-3">
+                    {statusLabel[property.status] ?? property.status}
+                  </td>
+                  <td className="px-4 py-3 tabular">
+                    {formatPrice(property.price, "es")}
+                  </td>
+                  <td className="px-4 py-3 tabular">
+                    {property.builtArea ?? "—"} / {property.plotArea ?? "—"}
+                  </td>
+                  <td className="px-4 py-3 tabular">
+                    {property.pendingTranslations}
+                  </td>
+                  <td className="px-4 py-3 tabular">{property.overrideCount}</td>
+                  <td className="px-4 py-3 text-right">
+                    <Link
+                      href={`/admin/properties/${property.id}`}
+                      className="rounded-full bg-limestone px-3 py-1.5 text-sea-deep hover:bg-[#e4dccf]"
+                    >
+                      Editar
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

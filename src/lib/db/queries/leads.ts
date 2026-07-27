@@ -1,11 +1,12 @@
 import { desc, eq } from "drizzle-orm";
 import { getDb } from "@/lib/db";
 import { leads } from "@/lib/db/schema";
+import { demoLeads } from "@/lib/db/admin-demo-data";
 import type { LeadInput } from "@/lib/db/types";
 
 export type LeadRecord = typeof leads.$inferSelect;
 
-const memoryLeads: LeadRecord[] = [];
+const memoryLeads: LeadRecord[] = [...demoLeads];
 
 function hasDatabase() {
   return Boolean(process.env.DATABASE_URL);
@@ -73,6 +74,25 @@ export async function updateLeadStatus(
   const [row] = await db
     .update(leads)
     .set({ status })
+    .where(eq(leads.id, id))
+    .returning();
+  return row ?? null;
+}
+
+export async function updateLeadNotes(
+  id: string,
+  notes: string,
+): Promise<LeadRecord | null> {
+  if (!hasDatabase()) {
+    const idx = memoryLeads.findIndex((l) => l.id === id);
+    if (idx < 0) return null;
+    memoryLeads[idx] = { ...memoryLeads[idx], notes };
+    return memoryLeads[idx];
+  }
+  const db = getDb();
+  const [row] = await db
+    .update(leads)
+    .set({ notes })
     .where(eq(leads.id, id))
     .returning();
   return row ?? null;

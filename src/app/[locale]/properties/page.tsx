@@ -58,7 +58,7 @@ export default async function PropertiesPage({ params, searchParams }: Props) {
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12">
+    <div className="mx-auto max-w-6xl px-4 pb-12 pt-24">
       <h1 className="font-display text-4xl text-ink">{t("title")}</h1>
       <div className="mt-6 space-y-4">
         <ConversationalSearch />

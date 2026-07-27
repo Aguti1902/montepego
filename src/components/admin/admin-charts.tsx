@@ -57,42 +57,64 @@ export function AdminGroupedBarChart({
 
   return (
     <div>
-      <div className="flex h-52 items-end gap-1 sm:gap-1.5">
+      <div className="max-h-80 space-y-2 overflow-y-auto pr-1">
         {primary.map((point, index) => {
           const secondaryPoint = secondary[index];
-          const primaryHeight = (point.value / max) * 100;
-          const secondaryHeight = ((secondaryPoint?.value ?? 0) / max) * 100;
+          const primaryWidth = (point.value / max) * 100;
+          const secondaryWidth = ((secondaryPoint?.value ?? 0) / max) * 100;
 
           return (
             <div
               key={`${point.label}-${index}`}
-              className="flex min-w-0 flex-1 flex-col items-center gap-2"
+              className="grid grid-cols-[3.75rem_1fr] items-center gap-3 sm:grid-cols-[4.25rem_1fr]"
             >
-              <div className="flex h-44 w-full items-end justify-center gap-0.5 sm:gap-1">
-                <div
-                  className="w-[46%] rounded-t-lg transition-all"
-                  style={{
-                    height: `${primaryHeight}%`,
-                    minHeight: point.value > 0 ? "6px" : 0,
-                    backgroundColor: primaryColor,
-                    opacity: 0.88,
-                  }}
-                  title={`${primaryLabel}: ${point.value}`}
-                />
-                <div
-                  className="w-[46%] rounded-t-lg transition-all"
-                  style={{
-                    height: `${secondaryHeight}%`,
-                    minHeight: (secondaryPoint?.value ?? 0) > 0 ? "6px" : 0,
-                    backgroundColor: secondaryColor,
-                    opacity: 0.88,
-                  }}
-                  title={`${secondaryLabel}: ${secondaryPoint?.value ?? 0}`}
-                />
-              </div>
-              <span className="w-full truncate text-center text-[10px] text-muted-foreground sm:text-[11px]">
+              <span className="text-[11px] text-muted-foreground">
                 {point.label}
               </span>
+              <div className="grid gap-1">
+                <div className="flex items-center gap-2">
+                  <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#e8eef5]">
+                    <div
+                      className="h-full rounded-full transition-all"
+                      style={{
+                        width: `${primaryWidth}%`,
+                        minWidth: point.value > 0 ? "6px" : 0,
+                        backgroundColor: primaryColor,
+                        opacity: 0.9,
+                      }}
+                      title={`${primaryLabel}: ${point.value}`}
+                    />
+                  </div>
+                  {point.value > 0 ? (
+                    <span className="w-4 tabular text-[10px] text-muted-foreground">
+                      {point.value}
+                    </span>
+                  ) : (
+                    <span className="w-4" aria-hidden />
+                  )}
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#f5ead8]/70">
+                    <div
+                      className="h-full rounded-full transition-all"
+                      style={{
+                        width: `${secondaryWidth}%`,
+                        minWidth: (secondaryPoint?.value ?? 0) > 0 ? "6px" : 0,
+                        backgroundColor: secondaryColor,
+                        opacity: 0.9,
+                      }}
+                      title={`${secondaryLabel}: ${secondaryPoint?.value ?? 0}`}
+                    />
+                  </div>
+                  {(secondaryPoint?.value ?? 0) > 0 ? (
+                    <span className="w-4 tabular text-[10px] text-muted-foreground">
+                      {secondaryPoint?.value}
+                    </span>
+                  ) : (
+                    <span className="w-4" aria-hidden />
+                  )}
+                </div>
+              </div>
             </div>
           );
         })}

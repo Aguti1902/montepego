@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Suspense } from "react";
 import {
   ShieldCheck,
   MapPinned,
@@ -12,15 +13,23 @@ import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/config/site";
 import { buttonVariants } from "@/components/ui/button";
 import { PropertyCard } from "@/components/property/property-card";
+import { PropertyFilters } from "@/components/property/property-filters";
 import { ConversationalSearch } from "@/components/property/conversational-search";
-import { getFeaturedProperties } from "@/lib/db/queries/properties";
+import { listProperties } from "@/lib/db/queries/properties";
 import { montePegoMedia } from "@/lib/media/site";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 };
+
+function num(value: string | string[] | undefined) {
+  if (typeof value !== "string" || value === "") return undefined;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : undefined;
+}
 
 const advantageIcons = [MapPinned, ShieldCheck, Languages, Home] as const;
 const advantageKeys = ["local", "care", "languages", "life"] as const;
@@ -38,11 +47,29 @@ export async function generateMetadata({ params }: Props) {
   });
 }
 
-export default async function HomePage({ params }: Props) {
+export default async function HomePage({ params, searchParams }: Props) {
   const { locale } = await params;
+  const sp = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("Home");
-  const featured = await getFeaturedProperties(locale, 6);
+  const tProps = await getTranslations("Properties");
+
+  const { items: properties, total } = await listProperties({
+    locale,
+    minPrice: num(sp.minPrice),
+    maxPrice: num(sp.maxPrice),
+    bedrooms: num(sp.bedrooms),
+    type:
+      typeof sp.type === "string"
+        ? [sp.type as "villa" | "apartment" | "plot" | "townhouse" | "commercial"]
+        : undefined,
+    sort:
+      typeof sp.sort === "string"
+        ? (sp.sort as "price_asc" | "price_desc" | "newest" | "oldest")
+        : "newest",
+    q: typeof sp.q === "string" ? sp.q : undefined,
+    pageSize: 30,
+  });
 
   return (
     <>
@@ -139,10 +166,15 @@ export default async function HomePage({ params }: Props) {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="flex items-end justify-between gap-4">
-          <h2 className="font-display text-3xl text-ink md:text-4xl">
-            {t("featured")}
-          </h2>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h2 className="font-display text-3xl text-ink md:text-4xl">
+              {t("catalogTitle")}
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {t("catalogCount", { count: total })}
+            </p>
+          </div>
           <Link
             href="/properties"
             className="rounded-full bg-limestone px-4 py-2 text-sm font-medium text-sea-deep hover:bg-[#e7dfd0]"
@@ -150,15 +182,24 @@ export default async function HomePage({ params }: Props) {
             {t("viewAll")} →
           </Link>
         </div>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((property) => (
-            <PropertyCard
-              key={property.id}
-              property={property}
-              locale={locale}
-            />
-          ))}
+        <div className="mt-6">
+          <Suspense fallback={null}>
+            <PropertyFilters />
+          </Suspense>
         </div>
+        {properties.length === 0 ? (
+          <p className="mt-10 text-muted-foreground">{tProps("noResults")}</p>
+        ) : (
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {properties.map((property) => (
+              <PropertyCard
+                key={property.id}
+                property={property}
+                locale={locale}
+              />
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-16">

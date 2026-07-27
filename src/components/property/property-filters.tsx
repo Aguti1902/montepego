@@ -20,12 +20,12 @@ export function PropertyFilters() {
     else params.set(key, value);
     params.delete("page");
     const query = params.toString();
-    router.push((query ? `${pathname}?${query}` : pathname) as "/properties");
+    router.push((query ? `${pathname}?${query}` : pathname) as "/" | "/properties");
   }
 
   return (
     <form
-      className="grid gap-4 border border-border bg-card p-4 md:grid-cols-5"
+      className="grid gap-4 rounded-[1.25rem] border border-border/80 bg-white/80 p-4 shadow-sm md:grid-cols-5"
       onSubmit={(event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -34,7 +34,7 @@ export function PropertyFilters() {
           if (String(value)) params.set(key, String(value));
         }
         const query = params.toString();
-        router.push((query ? `${pathname}?${query}` : pathname) as "/properties");
+        router.push((query ? `${pathname}?${query}` : pathname) as "/" | "/properties");
       }}
     >
       <div className="space-y-1">

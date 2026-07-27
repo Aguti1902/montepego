@@ -20,6 +20,32 @@ const filtersSchema = z.object({
   q: z.string().optional(),
 });
 
+function toSearchResult(p: {
+  id: string;
+  slug: string;
+  title: string;
+  price: number;
+  reference: string;
+  coverUrl: string | null;
+  bedrooms: number;
+  bathrooms: number;
+  builtArea: number | null;
+  type: string;
+}) {
+  return {
+    id: p.id,
+    slug: p.slug,
+    title: p.title,
+    price: p.price,
+    reference: p.reference,
+    coverUrl: p.coverUrl,
+    bedrooms: p.bedrooms,
+    bathrooms: p.bathrooms,
+    builtArea: p.builtArea,
+    type: p.type,
+  };
+}
+
 export async function POST(request: Request) {
   const parsed = bodySchema.safeParse(await request.json());
   if (!parsed.success) {
@@ -61,13 +87,7 @@ export async function POST(request: Request) {
       filters,
       explanation: ai.data.explanation,
       results: [],
-      nearest: nearest.items.map((p) => ({
-        id: p.id,
-        slug: p.slug,
-        title: p.title,
-        price: p.price,
-        reference: p.reference,
-      })),
+      nearest: nearest.items.map(toSearchResult),
       message: "No hay resultados exactos. Estas son las opciones más cercanas.",
       costUsd: ai.costUsd,
       mocked: ai.mocked,
@@ -77,13 +97,7 @@ export async function POST(request: Request) {
   return NextResponse.json({
     filters,
     explanation: ai.data.explanation,
-    results: items.map((p) => ({
-      id: p.id,
-      slug: p.slug,
-      title: p.title,
-      price: p.price,
-      reference: p.reference,
-    })),
+    results: items.map(toSearchResult),
     costUsd: ai.costUsd,
     mocked: ai.mocked,
   });

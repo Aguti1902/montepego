@@ -68,7 +68,7 @@ export default async function HomePage({ params, searchParams }: Props) {
         ? (sp.sort as "price_asc" | "price_desc" | "newest" | "oldest")
         : "newest",
     q: typeof sp.q === "string" ? sp.q : undefined,
-    pageSize: 30,
+    pageSize: 12,
   });
 
   return (

@@ -32,7 +32,7 @@ export function AdminChartCard({
   );
 }
 
-type GroupedBarChartProps = {
+type TrendChartProps = {
   primary: ChartPoint[];
   secondary: ChartPoint[];
   primaryLabel: string;
@@ -41,6 +41,35 @@ type GroupedBarChartProps = {
   secondaryColor?: string;
 };
 
+function buildTrendPath(
+  values: number[],
+  count: number,
+  yMax: number,
+  padL: number,
+  padT: number,
+  plotW: number,
+  plotH: number,
+) {
+  return values
+    .map((value, index) => {
+      const x =
+        count <= 1
+          ? padL + plotW / 2
+          : padL + (index / (count - 1)) * plotW;
+      const y = padT + plotH - (value / yMax) * plotH;
+      return `${index === 0 ? "M" : "L"} ${x.toFixed(2)} ${y.toFixed(2)}`;
+    })
+    .join(" ");
+}
+
+function niceYMax(max: number) {
+  if (max <= 1) return 2;
+  if (max <= 3) return 4;
+  if (max <= 5) return 6;
+  return Math.ceil(max * 1.15);
+}
+
+/** Gráfica de tendencia: eje X horizontal (días) y eje Y vertical (conteo). */
 export function AdminGroupedBarChart({
   primary,
   secondary,
@@ -48,88 +77,175 @@ export function AdminGroupedBarChart({
   secondaryLabel,
   primaryColor = "#2c558a",
   secondaryColor = "#b88c40",
-}: GroupedBarChartProps) {
-  const max = Math.max(
-    1,
-    ...primary.map((p) => p.value),
-    ...secondary.map((p) => p.value),
+}: TrendChartProps) {
+  const primaryValues = primary.map((p) => p.value);
+  const secondaryValues = secondary.map((p) => p.value);
+  const rawMax = Math.max(1, ...primaryValues, ...secondaryValues);
+  const yMax = niceYMax(rawMax);
+  const count = primary.length;
+
+  const width = 100;
+  const height = 52;
+  const padL = 10;
+  const padR = 3;
+  const padT = 5;
+  const padB = 14;
+  const plotW = width - padL - padR;
+  const plotH = height - padT - padB;
+
+  const primaryPath = buildTrendPath(
+    primaryValues,
+    count,
+    yMax,
+    padL,
+    padT,
+    plotW,
+    plotH,
   );
+  const secondaryPath = buildTrendPath(
+    secondaryValues,
+    count,
+    yMax,
+    padL,
+    padT,
+    plotW,
+    plotH,
+  );
+
+  const yTicks = Array.from({ length: yMax + 1 }, (_, value) => value);
+  const primaryPoints = primaryValues.map((value, index) => {
+    const x =
+      count <= 1 ? padL + plotW / 2 : padL + (index / (count - 1)) * plotW;
+    const y = padT + plotH - (value / yMax) * plotH;
+    return { x, y, value, label: primary[index]?.label ?? "" };
+  });
+  const secondaryPoints = secondaryValues.map((value, index) => {
+    const x =
+      count <= 1 ? padL + plotW / 2 : padL + (index / (count - 1)) * plotW;
+    const y = padT + plotH - (value / yMax) * plotH;
+    return { x, y, value };
+  });
 
   return (
     <div>
-      <div className="max-h-80 space-y-2 overflow-y-auto pr-1">
-        {primary.map((point, index) => {
-          const secondaryPoint = secondary[index];
-          const primaryWidth = (point.value / max) * 100;
-          const secondaryWidth = ((secondaryPoint?.value ?? 0) / max) * 100;
-
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        className="h-48 w-full overflow-visible"
+        role="img"
+        aria-label={`${primaryLabel} y ${secondaryLabel} por día`}
+      >
+        {yTicks.map((tick) => {
+          const y = padT + plotH - (tick / yMax) * plotH;
           return (
-            <div
-              key={`${point.label}-${index}`}
-              className="grid grid-cols-[3.75rem_1fr] items-center gap-3 sm:grid-cols-[4.25rem_1fr]"
-            >
-              <span className="text-[11px] text-muted-foreground">
-                {point.label}
-              </span>
-              <div className="grid gap-1">
-                <div className="flex items-center gap-2">
-                  <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#e8eef5]">
-                    <div
-                      className="h-full rounded-full transition-all"
-                      style={{
-                        width: `${primaryWidth}%`,
-                        minWidth: point.value > 0 ? "6px" : 0,
-                        backgroundColor: primaryColor,
-                        opacity: 0.9,
-                      }}
-                      title={`${primaryLabel}: ${point.value}`}
-                    />
-                  </div>
-                  {point.value > 0 ? (
-                    <span className="w-4 tabular text-[10px] text-muted-foreground">
-                      {point.value}
-                    </span>
-                  ) : (
-                    <span className="w-4" aria-hidden />
-                  )}
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-[#f5ead8]/70">
-                    <div
-                      className="h-full rounded-full transition-all"
-                      style={{
-                        width: `${secondaryWidth}%`,
-                        minWidth: (secondaryPoint?.value ?? 0) > 0 ? "6px" : 0,
-                        backgroundColor: secondaryColor,
-                        opacity: 0.9,
-                      }}
-                      title={`${secondaryLabel}: ${secondaryPoint?.value ?? 0}`}
-                    />
-                  </div>
-                  {(secondaryPoint?.value ?? 0) > 0 ? (
-                    <span className="w-4 tabular text-[10px] text-muted-foreground">
-                      {secondaryPoint?.value}
-                    </span>
-                  ) : (
-                    <span className="w-4" aria-hidden />
-                  )}
-                </div>
-              </div>
-            </div>
+            <g key={tick}>
+              <text
+                x={padL - 1.2}
+                y={y + 0.9}
+                textAnchor="end"
+                fontSize="2.4"
+                className="fill-muted-foreground"
+              >
+                {tick}
+              </text>
+              <line
+                x1={padL}
+                y1={y}
+                x2={width - padR}
+                y2={y}
+                stroke="#e2e8f0"
+                strokeWidth="0.35"
+              />
+            </g>
           );
         })}
-      </div>
-      <div className="mt-4 flex flex-wrap gap-4 text-xs text-muted-foreground">
+
+          <line
+            x1={padL}
+            y1={padT + plotH}
+            x2={width - padR}
+            y2={padT + plotH}
+            stroke="#cbd5e1"
+            strokeWidth="0.45"
+          />
+
+          <path
+            d={primaryPath}
+            fill="none"
+            stroke={primaryColor}
+            strokeWidth="1.1"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d={secondaryPath}
+            fill="none"
+            stroke={secondaryColor}
+            strokeWidth="1.1"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          {primaryPoints.map((point, index) =>
+            point.value > 0 ? (
+              <circle
+                key={`p-${index}`}
+                cx={point.x}
+                cy={point.y}
+                r="1.1"
+                fill={primaryColor}
+              >
+                <title>{`${point.label} · ${primaryLabel}: ${point.value}`}</title>
+              </circle>
+            ) : null,
+          )}
+          {secondaryPoints.map((point, index) =>
+            point.value > 0 ? (
+              <circle
+                key={`s-${index}`}
+                cx={point.x}
+                cy={point.y}
+                r="1.1"
+                fill={secondaryColor}
+              >
+                <title>{`${primary[index]?.label ?? ""} · ${secondaryLabel}: ${point.value}`}</title>
+              </circle>
+            ) : null,
+          )}
+
+          {primary.map((point, index) => {
+            const x =
+              count <= 1
+                ? padL + plotW / 2
+                : padL + (index / (count - 1)) * plotW;
+            const showLabel =
+              count <= 7 || index % 2 === 0 || index === count - 1;
+            if (!showLabel) return null;
+            return (
+              <text
+                key={`label-${index}`}
+                x={x}
+                y={height - 3}
+                textAnchor="middle"
+                className="fill-muted-foreground"
+                fontSize="2.6"
+              >
+                {point.label}
+              </text>
+            );
+          })}
+      </svg>
+
+      <div className="mt-2 flex flex-wrap gap-4 text-xs text-muted-foreground">
         <span className="inline-flex items-center gap-2">
           <span
-            className="h-2.5 w-2.5 rounded-full"
+            className="h-0.5 w-5 rounded-full"
             style={{ backgroundColor: primaryColor }}
           />
           {primaryLabel}
         </span>
         <span className="inline-flex items-center gap-2">
           <span
-            className="h-2.5 w-2.5 rounded-full"
+            className="h-0.5 w-5 rounded-full"
             style={{ backgroundColor: secondaryColor }}
           />
           {secondaryLabel}

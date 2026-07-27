@@ -11,6 +11,12 @@ import {
 } from "lucide-react";
 import { ActivityFeed } from "@/components/admin/activity-feed";
 import {
+  AdminChartCard,
+  AdminDonutChart,
+  AdminGroupedBarChart,
+  AdminHorizontalBarChart,
+} from "@/components/admin/admin-charts";
+import {
   AdminCard,
   AdminPageHeader,
   AdminStatPill,
@@ -95,6 +101,44 @@ export default async function AdminDashboardPage() {
         </div>
       </section>
 
+      <section>
+        <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+          Estadísticas
+        </h2>
+        <div className="grid gap-4 lg:grid-cols-2">
+          <AdminChartCard
+            title="Actividad diaria"
+            description="Leads y valoraciones recibidas en los últimos 14 días"
+          >
+            <AdminGroupedBarChart
+              primary={stats.charts.leadsByDay}
+              secondary={stats.charts.valuationsByDay}
+              primaryLabel="Leads"
+              secondaryLabel="Valoraciones"
+            />
+          </AdminChartCard>
+
+          <AdminChartCard
+            title="Cartera por estado"
+            description="Distribución actual del stock inmobiliario"
+          >
+            <AdminDonutChart
+              data={stats.charts.portfolio}
+              centerValue={stats.properties.total}
+              centerLabel="viviendas"
+            />
+          </AdminChartCard>
+
+          <AdminChartCard
+            title="Pipeline de leads"
+            description="Clientes potenciales según su fase"
+            className="lg:col-span-2"
+          >
+            <AdminHorizontalBarChart data={stats.charts.leadsByStatus} />
+          </AdminChartCard>
+        </div>
+      </section>
+
       <div className="grid gap-4 lg:grid-cols-[1.3fr_1fr]">
         <AdminCard>
           <div className="flex items-center justify-between">
@@ -110,6 +154,11 @@ export default async function AdminDashboardPage() {
               tone="success"
             />
             <AdminStatPill label="Destacadas" value={stats.properties.featured} tone="gold" />
+            <AdminStatPill
+              label="Reservadas"
+              value={stats.properties.reserved}
+              tone="gold"
+            />
             <AdminStatPill label="Vendidas" value={stats.properties.sold} tone="sea" />
             <AdminStatPill
               label="Sin publicar"
